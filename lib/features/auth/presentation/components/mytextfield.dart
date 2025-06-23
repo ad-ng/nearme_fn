@@ -18,6 +18,7 @@ class _MyTextFieldState extends State<MyTextField> {
       child: TextField(
         obscureText: hidePassword,
         obscuringCharacter: '*',
+        style: TextStyle(fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           hintText: widget.hint,
           focusedBorder: OutlineInputBorder(

@@ -35,6 +35,7 @@ class _MyCustomDatePickerState extends State<MyCustomDatePicker> {
       child: TextField(
         controller: widget.dobController,
         readOnly: true,
+        style: TextStyle(fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
