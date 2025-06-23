@@ -19,6 +19,7 @@ class _MyCustomDatePickerState extends State<MyCustomDatePicker> {
         readOnly: true,
         style: TextStyle(fontWeight: FontWeight.w500),
         decoration: InputDecoration(
+          hintText: 'Date Of Birth',
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(color: Colors.grey),

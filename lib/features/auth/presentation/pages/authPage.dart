@@ -32,7 +32,7 @@ class _AuthPageState extends State<AuthPage> {
                 ),
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
@@ -49,7 +49,7 @@ class _AuthPageState extends State<AuthPage> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.04),
             AuthTabsHeader(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Expanded(child: TabBarView(children: [LoginTab(), RegisterTab()])),
