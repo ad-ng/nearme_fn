@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nearme_fn/features/auth/presentation/components/authTabsHeader.dart';
 import 'package:nearme_fn/features/auth/presentation/components/loginTab.dart';
 import 'package:nearme_fn/features/auth/presentation/components/registerTab.dart';
@@ -17,43 +18,64 @@ class _AuthPageState extends State<AuthPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                'Get Started now',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                '././lib/images/Logomark.svg',
+                width: 31,
+                height: 31,
+              ),
+              Center(
+                child: Text(
+                  'Get Started now',
+                  style: TextStyle(
+                    color: const Color(0xFF007DD1),
+                    fontSize: 32,
+                    fontFamily: 'Urbanist',
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                text: 'Create an account or log in to \nexplore ',
-                style: TextStyle(color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Everything',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+              SizedBox(height: 14),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Create an account or log in\n to explore ',
+                      style: TextStyle(
+                        color: const Color(0xFF6C7278) /* Grey */,
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                        height: 1.50,
+                      ),
                     ),
-                  ),
-                ],
+                    TextSpan(
+                      text: 'Everything',
+                      style: TextStyle(
+                        color: const Color(0xFF007DD1),
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 1.50,
+                      ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-            AuthTabsHeader(),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-            Expanded(child: TabBarView(children: [LoginTab(), RegisterTab()])),
-          ],
+              SizedBox(height: 28.11),
+              AuthTabsHeader(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              Expanded(
+                child: TabBarView(children: [LoginTab(), RegisterTab()]),
+              ),
+            ],
+          ),
         ),
       ),
     );

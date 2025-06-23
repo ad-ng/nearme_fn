@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
@@ -20,12 +21,29 @@ class _LoginTabState extends State<LoginTab> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Email'),
-          SizedBox(height: 5),
+          Text(
+            'Email',
+            style: TextStyle(
+              color: const Color(0xFF6C7278),
+              fontSize: 16,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+              height: 1.50,
+            ),
+          ),
+
           MyTextField(hint: 'Email', isPassword: false),
-          SizedBox(height: 10),
-          Text('Password'),
-          SizedBox(height: 5),
+          SizedBox(height: 18.74),
+          Text(
+            'Password',
+            style: TextStyle(
+              color: const Color(0xFF6C7278),
+              fontSize: 16,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+              height: 1.50,
+            ),
+          ),
           MyTextField(hint: 'Password', isPassword: true),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,22 +59,35 @@ class _LoginTabState extends State<LoginTab> {
                       });
                     },
                   ),
-                  Text('Remember me', style: TextStyle(color: Colors.grey)),
+                  Text(
+                    'Remember me',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color(0xFF6C7278),
+                      fontSize: 14,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                      height: 1.60,
+                    ),
+                  ),
                 ],
               ),
               TextButton(
                 onPressed: () => context.pushNamed('forgotPassword'),
                 child: Text(
-                  'Forgot Password?',
+                  'Forgot Password ?',
+                  textAlign: TextAlign.right,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: const Color(0xFF2E2E2E),
+                    fontSize: 14,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+          SizedBox(height: 18.11),
           MyButton(nameOfAction: 'Log In', actionToPerform: () {}),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           Row(
@@ -65,13 +96,23 @@ class _LoginTabState extends State<LoginTab> {
               Container(
                 height: 1,
                 width: MediaQuery.of(context).size.width * 0.3,
-                decoration: BoxDecoration(color: Colors.grey),
+                decoration: BoxDecoration(color: const Color(0xFFEDF1F3)),
               ),
-              Text('Or login with'),
+              Text(
+                'Or login with',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: const Color(0xFF6C7278),
+                  fontSize: 14,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                  height: 1.60,
+                ),
+              ),
               Container(
                 height: 1,
                 width: MediaQuery.of(context).size.width * 0.3,
-                decoration: BoxDecoration(color: Colors.grey),
+                decoration: BoxDecoration(color: const Color(0xFFEDF1F3)),
               ),
             ],
           ),
@@ -80,24 +121,37 @@ class _LoginTabState extends State<LoginTab> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                width: 82.57,
+                height: 56.22,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 1.17,
+                      color: const Color(0xFFEFF0F6),
+                    ),
+                    borderRadius: BorderRadius.circular(11.71),
+                  ),
                 ),
-                child: Image.asset(
-                  '././lib/images/google-logo.png',
-                  height: 30,
-                ),
+                child: SvgPicture.asset('././lib/images/google.svg'),
               ),
-              SizedBox(width: 20),
+              SizedBox(width: 17.57),
               Container(
+                width: 82.57,
+                height: 56.22,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 1.17,
+                      color: const Color(0xFFEFF0F6),
+                    ),
+                    borderRadius: BorderRadius.circular(11.71),
+                  ),
                 ),
-                child: Image.asset('././lib/images/apple-logo.png', height: 30),
+                child: SvgPicture.asset('././lib/images/apple-logo.svg'),
               ),
             ],
           ),

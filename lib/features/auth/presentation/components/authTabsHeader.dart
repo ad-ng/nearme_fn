@@ -12,9 +12,9 @@ class _AuthTabsHeaderState extends State<AuthTabsHeader> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
+      height: 42.17,
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: const Color(0xFFF5F6F9),
         borderRadius: BorderRadius.circular(12),
       ),
       margin: EdgeInsets.symmetric(horizontal: 20),
@@ -28,22 +28,44 @@ class _AuthTabsHeaderState extends State<AuthTabsHeader> {
         tabs: [
           Tab(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: EdgeInsets.symmetric(vertical: 1.5),
               decoration: BoxDecoration(
-                color: (isLogIn == 0) ? Colors.white : Colors.transparent,
+                color: (isLogIn == 0) ? Colors.white : Color(0x7FEFF0F6),
                 borderRadius: BorderRadius.circular(6),
               ),
-              child: Center(child: Text('Log In')),
+              child: Center(
+                child: Text(
+                  'Log In ',
+                  style: TextStyle(
+                    color: const Color(0xFF232447),
+                    fontSize: 16,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                    height: 1.50,
+                  ),
+                ),
+              ),
             ),
           ),
           Tab(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: EdgeInsets.symmetric(vertical: 1.5),
               decoration: BoxDecoration(
                 color: (isLogIn == 0) ? Colors.transparent : Colors.white,
                 borderRadius: BorderRadius.circular(6),
               ),
-              child: Center(child: Text('Sign Up')),
+              child: Center(
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: const Color(0xFF7D7D91),
+                    fontSize: 16,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                    height: 1.50,
+                  ),
+                ),
+              ),
             ),
           ),
         ],

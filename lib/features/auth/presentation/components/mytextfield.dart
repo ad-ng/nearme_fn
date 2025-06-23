@@ -14,11 +14,16 @@ class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 53.88,
       child: TextField(
         obscureText: hidePassword,
         obscuringCharacter: '*',
-        style: TextStyle(fontWeight: FontWeight.w500),
+        style: TextStyle(
+          color: const Color(0xFF2E2E2E),
+          fontSize: 16,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w600,
+        ),
         decoration: InputDecoration(
           hintText: widget.hint,
           focusedBorder: OutlineInputBorder(

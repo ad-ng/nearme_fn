@@ -13,20 +13,25 @@ class _MyCustomDatePickerState extends State<MyCustomDatePicker> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 53.88,
       child: TextField(
         controller: widget.dobController,
         readOnly: true,
-        style: TextStyle(fontWeight: FontWeight.w500),
+        style: TextStyle(
+          color: const Color(0xFF2E2E2E),
+          fontSize: 18,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w600,
+        ),
         decoration: InputDecoration(
           hintText: 'Date Of Birth',
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.circular(11.72),
+            borderSide: BorderSide(color: const Color(0xFFEDF1F3)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: const Color(0xFFEDF1F3)),
           ),
           suffixIcon: Icon(Icons.calendar_month_rounded, color: Colors.grey),
         ),
