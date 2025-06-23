@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
 
@@ -43,9 +44,15 @@ class _LoginTabState extends State<LoginTab> {
                   Text('Remember me', style: TextStyle(color: Colors.grey)),
                 ],
               ),
-              Text(
-                'Forgot Password?',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              TextButton(
+                onPressed: () => context.pushNamed('forgotPassword'),
+                child: Text(
+                  'Forgot Password?',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ],
           ),
