@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
+import 'package:nearme_fn/features/auth/presentation/components/otpcard.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({super.key});
+class OTPPage extends StatefulWidget {
+  const OTPPage({super.key});
 
   @override
-  State<ForgotPassword> createState() => _ForgotPasswordState();
+  State<OTPPage> createState() => _OTPPageState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _OTPPageState extends State<OTPPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +22,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           children: [
             Center(
               child: Text(
-                'Forgot Your \nPassword?',
+                'Reset Password',
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
@@ -30,16 +30,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Center(
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: 'We will send you a reset OTP on\nyour ',
+                  text: 'We have sent you a reset OTP on\na provided ',
                   style: TextStyle(color: Colors.grey),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Registered Email Address!',
+                      text: 'Email Address!',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
@@ -49,12 +49,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ),
             ),
-            SizedBox(height: 40),
-            Text('Email', style: TextStyle(color: Colors.grey)),
-            MyTextField(hint: 'Email', isPassword: false),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.07),
+            Text('Enter OTP', style: TextStyle(color: Colors.grey)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [OtpCard(), OtpCard(), OtpCard(), OtpCard(), OtpCard()],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.17),
             MyButton(
-              nameOfAction: 'Send Reset Link',
+              nameOfAction: 'Submit OTP',
               actionToPerform: () {
                 context.pushNamed('otpPage');
               },

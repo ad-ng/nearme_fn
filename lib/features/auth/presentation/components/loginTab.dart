@@ -57,7 +57,7 @@ class _LoginTabState extends State<LoginTab> {
             ],
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-          MyButton(nameOfAction: 'Log In'),
+          MyButton(nameOfAction: 'Log In', actionToPerform: () {}),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

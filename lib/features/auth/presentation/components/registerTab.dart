@@ -61,7 +61,7 @@ class _RegisterTabState extends State<RegisterTab> {
           Text('Set Password', style: TextStyle(color: Colors.grey)),
           MyTextField(hint: 'Password', isPassword: true),
           SizedBox(height: 30),
-          MyButton(nameOfAction: 'Register'),
+          MyButton(nameOfAction: 'Register', actionToPerform: () {}),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/authPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,6 +41,11 @@ final GoRouter routes = GoRouter(
       name: 'forgotPassword',
       path: '/forgotPassword',
       builder: (context, state) => const ForgotPassword(),
+    ),
+    GoRoute(
+      name: 'otpPage',
+      path: '/otpPage',
+      builder: (context, state) => const OTPPage(),
     ),
   ],
 );
