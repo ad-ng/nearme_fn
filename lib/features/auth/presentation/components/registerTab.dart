@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mycutomdatePicker.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
+import 'package:nearme_fn/features/auth/presentation/components/phoneField.dart';
 
 class RegisterTab extends StatefulWidget {
   const RegisterTab({super.key});
@@ -55,7 +56,7 @@ class _RegisterTabState extends State<RegisterTab> {
           MyCustomDatePicker(dobController: TextEditingController()),
           SizedBox(height: 10),
           Text('Phone Number', style: TextStyle(color: Colors.grey)),
-          MyTextField(hint: 'Phone Number', isPassword: false),
+          PhoneField(),
           SizedBox(height: 10),
           Text('Set Password', style: TextStyle(color: Colors.grey)),
           MyTextField(hint: 'Password', isPassword: true),
