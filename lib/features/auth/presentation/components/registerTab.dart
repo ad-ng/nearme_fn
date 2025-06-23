@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nearme_fn/features/auth/presentation/components/mycutomdatePicker.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
 
@@ -51,7 +52,7 @@ class _RegisterTabState extends State<RegisterTab> {
           MyTextField(hint: 'Email', isPassword: false),
           SizedBox(height: 10),
           Text('Date Of Birth', style: TextStyle(color: Colors.grey)),
-          MyTextField(hint: 'Date Of Birth', isPassword: false),
+          MyCustomDatePicker(dobController: TextEditingController()),
           SizedBox(height: 10),
           Text('Phone Number', style: TextStyle(color: Colors.grey)),
           MyTextField(hint: 'Phone Number', isPassword: false),
