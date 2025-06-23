@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/authPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +47,11 @@ final GoRouter routes = GoRouter(
       name: 'otpPage',
       path: '/otpPage',
       builder: (context, state) => const OTPPage(),
+    ),
+    GoRoute(
+      name: 'passwordResetPage',
+      path: '/passwordResetPage',
+      builder: (context, state) => const PasswordResetPage(),
     ),
   ],
 );

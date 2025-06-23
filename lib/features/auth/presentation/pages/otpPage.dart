@@ -59,7 +59,7 @@ class _OTPPageState extends State<OTPPage> {
             MyButton(
               nameOfAction: 'Submit OTP',
               actionToPerform: () {
-                context.pushNamed('otpPage');
+                context.pushNamed('passwordResetPage');
               },
             ),
           ],
