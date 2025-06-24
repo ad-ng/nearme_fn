@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/authPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Everything NearMe',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF007DD1)),
       ),
       routerConfig: routes,
     );
@@ -31,7 +32,7 @@ final GoRouter routes = GoRouter(
     GoRoute(
       name: '/',
       path: '/',
-      builder: (context, state) => const AuthPage(),
+      builder: (context, state) => const OnBoardingScreens(),
     ),
     GoRoute(
       name: 'auth',
@@ -52,6 +53,11 @@ final GoRouter routes = GoRouter(
       name: 'passwordResetPage',
       path: '/passwordResetPage',
       builder: (context, state) => const PasswordResetPage(),
+    ),
+    GoRoute(
+      name: 'onboarding',
+      path: '/onboarding',
+      builder: (context, state) => const OnBoardingScreens(),
     ),
   ],
 );

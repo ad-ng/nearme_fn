@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nearme_fn/features/auth/presentation/components/authTabsHeader.dart';
-import 'package:nearme_fn/features/auth/presentation/components/loginTab.dart';
-import 'package:nearme_fn/features/auth/presentation/components/registerTab.dart';
+import 'package:nearme_fn/features/auth/presentation/components/log%20in/loginTab.dart';
+import 'package:nearme_fn/features/auth/presentation/components/register/registerTab.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});

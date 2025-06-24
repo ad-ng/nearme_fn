@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mycutomdatePicker.dart';
+import 'package:nearme_fn/features/auth/presentation/components/register/mycutomdatePicker.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
-import 'package:nearme_fn/features/auth/presentation/components/phoneField.dart';
+import 'package:nearme_fn/features/auth/presentation/components/register/phoneField.dart';
 
 class RegisterTab extends StatefulWidget {
   const RegisterTab({super.key});
