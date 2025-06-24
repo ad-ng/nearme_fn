@@ -20,59 +20,62 @@ class _AuthPageState extends State<AuthPage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Stack(
             children: [
-              SvgPicture.asset(
-                '././lib/images/Logomark.svg',
-                width: 31,
-                height: 31,
-              ),
-              Center(
-                child: Text(
-                  'Get Started now',
-                  style: TextStyle(
-                    color: const Color(0xFF007DD1),
-                    fontSize: 32,
-                    fontFamily: 'Urbanist',
-                    fontWeight: FontWeight.w700,
+              Image.asset('././lib/images/Pattern.png'),
+              Column(
+                children: [
+                  SvgPicture.asset(
+                    '././lib/images/Logomark.svg',
+                    width: 31,
+                    height: 31,
                   ),
-                ),
-              ),
-              SizedBox(height: 14),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Create an account or log in\n to explore ',
-                      style: TextStyle(
-                        color: const Color(0xFF6C7278) /* Grey */,
-                        fontSize: 16,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w400,
-                        height: 1.50,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Everything',
+                  Center(
+                    child: Text(
+                      'Get Started now',
                       style: TextStyle(
                         color: const Color(0xFF007DD1),
-                        fontSize: 16,
-                        fontFamily: 'Inter',
+                        fontSize: 32,
+                        fontFamily: 'Urbanist',
                         fontWeight: FontWeight.w700,
-                        height: 1.50,
                       ),
                     ),
-                  ],
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 28.11),
-              AuthTabsHeader(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-              Expanded(
-                child: TabBarView(children: [LoginTab(), RegisterTab()]),
+                  ),
+                  SizedBox(height: 14),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Create an account or log in\n to explore ',
+                          style: TextStyle(
+                            color: const Color(0xFF6C7278) /* Grey */,
+                            fontSize: 16,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                            height: 1.50,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Everything',
+                          style: TextStyle(
+                            color: const Color(0xFF007DD1),
+                            fontSize: 16,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w700,
+                            height: 1.50,
+                          ),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 28.11),
+                  AuthTabsHeader(),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                  Expanded(
+                    child: TabBarView(children: [LoginTab(), RegisterTab()]),
+                  ),
+                ],
               ),
             ],
           ),
