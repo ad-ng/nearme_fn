@@ -8,37 +8,64 @@ class PasswordResetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: Text(
                 'Reset Password',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  color: Color(0xFF007DD1),
+                  fontSize: 32,
+                  fontFamily: 'Urbanist',
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-            Center(
+            const SizedBox(height: 14),
+            const Center(
               child: Text(
+                'Type New Password and Re-type it for confirmation and Save!',
                 textAlign: TextAlign.center,
-                'Type New Password and Re-type \nit for confirmation and save!',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(
+                  color: Color(0xFF6C7278),
+                  fontSize: 16,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                  height: 1.50,
+                ),
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-            Text('New Password', style: TextStyle(color: Colors.grey)),
-            MyTextField(hint: 'New Password', isPassword: true),
-            SizedBox(height: 15),
-            Text('Confirm New Password', style: TextStyle(color: Colors.grey)),
-            MyTextField(hint: 'Confirm New Password', isPassword: true),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.12),
+            const Text(
+              'New Password',
+              style: TextStyle(
+                color: Color(0xFF6C7278),
+                fontSize: 16,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+                height: 1.50,
+              ),
+            ),
+            const MyTextField(hint: 'New Password', isPassword: true),
+            const SizedBox(height: 14.3),
+            const Text(
+              'Confirm New Password',
+              style: TextStyle(
+                color: Color(0xFF6C7278),
+                fontSize: 16,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+                height: 1.50,
+              ),
+            ),
+            const MyTextField(hint: 'Confirm New Password', isPassword: true),
+            const SizedBox(height: 70),
             MyButton(nameOfAction: 'Save New Password', actionToPerform: () {}),
           ],
         ),
