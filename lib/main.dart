@@ -6,7 +6,8 @@ import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dar
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
 
 final GoRouter routes = GoRouter(
   initialLocation: '/',
+
   routes: [
     GoRoute(
       name: '/',
