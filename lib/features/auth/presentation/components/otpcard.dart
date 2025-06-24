@@ -6,23 +6,30 @@ class OtpCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 50,
-      height: 50,
+      width: 52,
+      height: 52,
       child: TextField(
         textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+        style: const TextStyle(
+          color: Color(0xFF595A65),
+          fontSize: 24,
+          fontFamily: 'SF Pro Display',
+          fontWeight: FontWeight.w700,
+          height: 1.35,
+        ),
         maxLength: 1,
         decoration: InputDecoration(
           isDense: true,
           counterText: '',
           filled: true,
+          fillColor: const Color(0xFFE5E7EA),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.blue, width: 1),
+            borderSide: const BorderSide(color: Colors.blue, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey, width: 1),
+            borderSide: const BorderSide(color: Colors.transparent),
           ),
         ),
       ),

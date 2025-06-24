@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/otpcard.dart';
@@ -14,48 +15,77 @@ class _OTPPageState extends State<OTPPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
+              child: SvgPicture.asset(
+                '././lib/images/Logomark.svg',
+                width: 31,
+                height: 31,
+              ),
+            ),
+            const SizedBox(height: 40),
+            const Center(
               child: Text(
                 'Reset Password',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  color: Color(0xFF007DD1),
+                  fontSize: 32,
+                  fontFamily: 'Urbanist',
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            const SizedBox(height: 14.3),
             Center(
               child: RichText(
                 textAlign: TextAlign.center,
-                text: TextSpan(
+                text: const TextSpan(
                   text: 'We have sent you a reset OTP on\na provided ',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(
+                    color: Color(0xFF6C7278),
+                    fontSize: 16,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                    height: 1.50,
+                  ),
                   children: <TextSpan>[
                     TextSpan(
                       text: 'Email Address!',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                        color: Color(0xFF6C7278),
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 1.50,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.07),
-            Text('Enter OTP', style: TextStyle(color: Colors.grey)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            const SizedBox(height: 44),
+            const Text(
+              'Enter OTP',
+              style: TextStyle(
+                color: Color(0xFF6C7278),
+                fontSize: 16,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+                height: 1.50,
+              ),
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [OtpCard(), OtpCard(), OtpCard(), OtpCard(), OtpCard()],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.17),
+            const SizedBox(height: 120),
             MyButton(
               nameOfAction: 'Submit OTP',
               actionToPerform: () {
