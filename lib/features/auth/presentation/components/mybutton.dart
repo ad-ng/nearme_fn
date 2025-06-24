@@ -27,10 +27,12 @@ class _MyButtonState extends State<MyButton> {
           onPressed: () => widget.actionToPerform(),
           child: Text(
             widget.nameOfAction,
-            style: TextStyle(
+            textAlign: TextAlign.center,
+            style: const TextStyle(
               color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
