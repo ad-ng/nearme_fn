@@ -30,7 +30,7 @@ class _AuthPageState extends State<AuthPage> {
                     width: 31,
                     height: 31,
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       'Get Started now',
                       style: TextStyle(
@@ -41,8 +41,8 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 14),
-                  Text.rich(
+                  const SizedBox(height: 14),
+                  const Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
@@ -69,10 +69,10 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 28.11),
-                  AuthTabsHeader(),
+                  const SizedBox(height: 28.11),
+                  const AuthTabsHeader(),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Expanded(
+                  const Expanded(
                     child: TabBarView(children: [LoginTab(), RegisterTab()]),
                   ),
                 ],
