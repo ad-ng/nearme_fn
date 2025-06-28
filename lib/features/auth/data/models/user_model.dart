@@ -12,6 +12,7 @@ class UserModel {
   String? Status;
   String? profileImg;
   String? dob;
+  String? password;
   String? phoneNumber;
   String? role;
   UserModel({
@@ -27,6 +28,7 @@ class UserModel {
     this.profileImg,
     this.dob,
     this.phoneNumber,
+    this.password,
   });
 
   Map<String, dynamic> toMap() {
@@ -42,6 +44,7 @@ class UserModel {
       'profileImg': profileImg,
       'dob': dob,
       'phoneNumber': phoneNumber,
+      'password': password,
       'role': role,
     };
   }
