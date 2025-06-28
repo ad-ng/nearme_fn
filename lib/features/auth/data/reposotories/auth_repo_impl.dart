@@ -7,4 +7,9 @@ class AuthRepoImpl implements AuthRepos {
   Future<UserModel> login(String email, String password) {
     return AuthApiService().login(email, password);
   }
+
+  @override
+  Future<UserModel> registering(UserModel userModel) {
+    return AuthApiService().registering(userModel);
+  }
 }

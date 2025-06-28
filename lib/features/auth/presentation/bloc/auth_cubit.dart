@@ -11,7 +11,17 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final response = await _authRepos.login(email, password);
-      emit(AuthSuccess(response));
+      emit(LoginSuccess(response));
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
+  }
+
+  Future registering(UserModel userModel) async {
+    emit(AuthLoading());
+    try {
+      final response = await _authRepos.registering(userModel);
+      emit(RegisterSuccess(response));
     } catch (e) {
       emit(AuthError(e.toString()));
     }
@@ -28,8 +38,14 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 /// to run at success
-class AuthSuccess extends AuthState {
-  AuthSuccess(this.response);
+class LoginSuccess extends AuthState {
+  LoginSuccess(this.response);
+  final UserModel response;
+}
+
+/// to run at success
+class RegisterSuccess extends AuthState {
+  RegisterSuccess(this.response);
   final UserModel response;
 }
 

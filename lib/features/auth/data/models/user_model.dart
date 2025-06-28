@@ -2,23 +2,23 @@ import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class UserModel {
-  int id;
+  int? id;
   String? firstName;
   String? lastName;
   String? gender;
-  String email;
-  bool isVerified;
+  String? email;
+  bool? isVerified;
   String? country;
   String? Status;
   String? profileImg;
   String? dob;
   String? phoneNumber;
-  String role;
+  String? role;
   UserModel({
-    required this.id,
-    required this.email,
-    required this.isVerified,
-    required this.role,
+    this.id,
+    this.email,
+    this.isVerified,
+    this.role,
     this.firstName,
     this.lastName,
     this.gender,

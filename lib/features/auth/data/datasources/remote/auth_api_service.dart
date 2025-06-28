@@ -3,6 +3,7 @@ import 'package:nearme_fn/conf/dio/dioService.dart';
 import 'package:nearme_fn/features/auth/data/datasources/local/tokenstore.dart';
 import 'package:nearme_fn/features/auth/data/datasources/local/user_preferences.dart';
 import 'package:nearme_fn/features/auth/data/models/user_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// a class that performs all api calls related to auth
 class AuthApiService {
@@ -10,10 +11,39 @@ class AuthApiService {
 
   ///logging in a user
   Future<UserModel> login(String email, String password) async {
+    final preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+
     try {
       final response = await _dio.post<Map<String, dynamic>>(
         '/auth/login',
         data: {'email': email, 'password': password},
+      );
+
+      final token = response.data?['token'] as String;
+      final dataJson = response.data?['data'] as Map<String, dynamic>;
+      final currentUser = UserModel.fromMap(dataJson);
+
+      await TokenStore.setToken(token);
+      await UserPreferences().saveLocalUser(currentUser);
+
+      return currentUser;
+    } on DioException catch (e) {
+      throw Exception(e.message);
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
+
+  ///registering a user
+  Future<UserModel> registering(UserModel userModel) async {
+    final preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/auth/register',
+        data: userModel.toMap(),
       );
 
       final token = response.data?['token'] as String;

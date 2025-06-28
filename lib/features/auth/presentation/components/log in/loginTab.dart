@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nearme_fn/components/success_message.dart';
+import 'package:nearme_fn/components/error_message.dart';
 import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:nearme_fn/components/loading_State.dart';
 import 'package:nearme_fn/components/mybutton.dart';
@@ -24,7 +24,7 @@ class _LoginTabState extends State<LoginTab> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthSuccess) {
+        if (state is LoginSuccess) {
           context.goNamed('homePage');
         }
         if (state is AuthError) {
@@ -47,7 +47,6 @@ class _LoginTabState extends State<LoginTab> {
                   height: 1.50,
                 ),
               ),
-
               MyTextField(
                 myController: emailController,
                 hint: 'Email',
@@ -117,7 +116,6 @@ class _LoginTabState extends State<LoginTab> {
                   if (state is AuthLoading) {
                     return const LoadingState();
                   }
-
                   return MyButton(
                     nameOfAction: 'Log In',
                     actionToPerform: () async {
