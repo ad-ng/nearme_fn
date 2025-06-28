@@ -7,6 +7,8 @@ class PasswordResetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final newPasswordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(backgroundColor: Colors.white),
@@ -52,7 +54,11 @@ class PasswordResetPage extends StatelessWidget {
                 height: 1.50,
               ),
             ),
-            const MyTextField(hint: 'New Password', isPassword: true),
+            MyTextField(
+              myController: newPasswordController,
+              hint: 'New Password',
+              isPassword: true,
+            ),
             const SizedBox(height: 14.3),
             const Text(
               'Confirm New Password',
@@ -64,7 +70,11 @@ class PasswordResetPage extends StatelessWidget {
                 height: 1.50,
               ),
             ),
-            const MyTextField(hint: 'Confirm New Password', isPassword: true),
+            MyTextField(
+              myController: confirmPasswordController,
+              hint: 'Confirm New Password',
+              isPassword: true,
+            ),
             const SizedBox(height: 70),
             MyButton(nameOfAction: 'Save New Password', actionToPerform: () {}),
           ],

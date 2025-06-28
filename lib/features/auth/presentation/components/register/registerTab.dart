@@ -12,6 +12,13 @@ class RegisterTab extends StatefulWidget {
 }
 
 class _RegisterTabState extends State<RegisterTab> {
+  TextEditingController firstName = TextEditingController();
+  TextEditingController lastName = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController dob = TextEditingController();
+  TextEditingController phoneNumber = TextEditingController();
+  TextEditingController password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -38,7 +45,8 @@ class _RegisterTabState extends State<RegisterTab> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.44,
-                      child: const MyTextField(
+                      child: MyTextField(
+                        myController: firstName,
                         hint: 'First Name',
                         isPassword: false,
                       ),
@@ -52,7 +60,7 @@ class _RegisterTabState extends State<RegisterTab> {
                     const Text(
                       'Last Name',
                       style: TextStyle(
-                        color: const Color(0xFF6C7278) /* Grey */,
+                        color: Color(0xFF6C7278),
                         fontSize: 16,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
@@ -61,7 +69,8 @@ class _RegisterTabState extends State<RegisterTab> {
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.44,
-                      child: const MyTextField(
+                      child: MyTextField(
+                        myController: lastName,
                         hint: 'Last Name',
                         isPassword: false,
                       ),
@@ -81,7 +90,7 @@ class _RegisterTabState extends State<RegisterTab> {
                 height: 1.50,
               ),
             ),
-            const MyTextField(hint: 'Email', isPassword: false),
+            MyTextField(myController: email, hint: 'Email', isPassword: false),
             const SizedBox(height: 10),
             const Text(
               'Date Of Birth',
@@ -110,14 +119,18 @@ class _RegisterTabState extends State<RegisterTab> {
             const Text(
               'Set Password',
               style: TextStyle(
-                color: const Color(0xFF6C7278),
+                color: Color(0xFF6C7278),
                 fontSize: 16,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w400,
                 height: 1.50,
               ),
             ),
-            const MyTextField(hint: 'Password', isPassword: true),
+            MyTextField(
+              myController: password,
+              hint: 'Password',
+              isPassword: true,
+            ),
             const SizedBox(height: 30),
             MyButton(nameOfAction: 'Register', actionToPerform: () {}),
           ],

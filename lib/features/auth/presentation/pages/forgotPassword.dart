@@ -12,6 +12,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,14 +90,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const Text(
                   'Email',
                   style: TextStyle(
-                    color: const Color(0xFF6C7278) /* Grey */,
+                    color: Color(0xFF6C7278),
                     fontSize: 16,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
                     height: 1.50,
                   ),
                 ),
-                const MyTextField(hint: 'Email', isPassword: false),
+                MyTextField(
+                  myController: emailController,
+                  hint: 'Email',
+                  isPassword: false,
+                ),
                 const SizedBox(height: 58),
                 MyButton(
                   nameOfAction: 'Send Reset Link',
