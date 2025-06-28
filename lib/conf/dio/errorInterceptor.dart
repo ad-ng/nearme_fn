@@ -1,22 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:nearme_fn/conf/dio/errormodel.dart';
 
-/// an interceptor to handle all dio errors generally
+/// An interceptor to handle all Dio errors and normalize them into [ErrorModel].
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     print('Request Path: ${err.requestOptions.path}');
     print('Request Extra: ${err.requestOptions.extra}');
 
-    final useErrorInterceptor =
-        err.requestOptions.extra['useErrorInterceptor'] ?? true;
+    final bool useErrorInterceptor =
+        (err.requestOptions.extra['useErrorInterceptor'] ?? true) as bool;
+
     print('useErrorInterceptor: $useErrorInterceptor');
 
-    // if (!useErrorInterceptor) {
-    //   print('ErrorInterceptor: Skipping error handling for this request');
-    //   handler.next(err);
-    //   return;
-    // }
+    // Skip handling if explicitly disabled
+    if (!useErrorInterceptor) {
+      handler.next(err);
+      return;
+    }
 
     final apiError = _handleError(err);
 
@@ -31,29 +32,38 @@ class ErrorInterceptor extends Interceptor {
     );
   }
 
+  /// Extracts a clean [ErrorModel] from the Dio error response
   ErrorModel _handleError(DioException error) {
-    if (error.response != null && error.response!.data != null) {
+    if (error.response != null && error.response?.data != null) {
       try {
         final errorData = error.response!.data;
 
-        if (errorData is ErrorModel) return errorData;
+        if (errorData is ErrorModel) {
+          return errorData;
+        }
 
         if (errorData is Map<String, dynamic>) {
           return ErrorModel.fromMap(errorData);
         }
 
         if (errorData is String) {
-          return ErrorModel.fromJson(errorData);
+          try {
+            return ErrorModel.fromJson(errorData);
+          } catch (_) {
+            return ErrorModel(
+              message: [errorData],
+              error: 'Raw Error',
+              statusCode: error.response?.statusCode ?? 500,
+            );
+          }
         }
 
-        print('Unexpected error response format: $errorData');
         return ErrorModel(
           message: ['Unexpected error format'],
           error: 'Unexpected Error',
           statusCode: error.response?.statusCode ?? 500,
         );
       } catch (e) {
-        print('Failed to parse error response: $e');
         return ErrorModel(
           message: ['Failed to parse error response'],
           error: 'Parsing Error',
@@ -62,9 +72,9 @@ class ErrorInterceptor extends Interceptor {
       }
     } else {
       return ErrorModel(
-        message: [error.message ?? 'Unknown error occurred'],
+        message: [error.message ?? 'No response from server'],
         error: 'Network Error',
-        statusCode: error.response?.statusCode ?? 500,
+        statusCode: 0,
       );
     }
   }

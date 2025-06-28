@@ -9,6 +9,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
+import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,6 +71,11 @@ final GoRouter routes = GoRouter(
       name: 'onboarding',
       path: '/onboarding',
       builder: (context, state) => const OnBoardingScreens(),
+    ),
+    GoRoute(
+      name: 'homePage',
+      path: '/homePage',
+      builder: (context, state) => const HomePage(),
     ),
   ],
 );
