@@ -1,19 +1,24 @@
 import 'package:dio/dio.dart';
-import 'package:nearme_fn/conf/appVariables.dart';
+import 'package:nearme_fn/conf/app_variables.dart';
 import 'package:nearme_fn/conf/dio/errorInterceptor.dart';
 import 'package:nearme_fn/conf/dio/headerinterceptor.dart';
 
+///all general dio configurations
 class DioService {
   DioService._privateConstructor();
+
+  /// initializing dio singleton
   static final DioService instance = DioService._privateConstructor();
 
+  /// instantiating dio
   Dio dio = Dio();
 
+  /// a function to connect dio globally in an app
   void setup() {
-    dio.options.baseUrl = Appvariables().homeUrl;
+    dio.options.baseUrl = LocalVariables().homeUrl;
 
-    dio.options.connectTimeout = Duration(seconds: 15);
-    dio.options.receiveTimeout = Duration(seconds: 15);
+    dio.options.connectTimeout = const Duration(seconds: 15);
+    dio.options.receiveTimeout = const Duration(seconds: 15);
 
     dio.options.headers = {
       'Content-Type': 'application/json',

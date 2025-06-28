@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:nearme_fn/features/auth/data/datasources/local/tokenstore.dart';
 
+/// a class to intercept all request to add a token
 class HeaderInterceptor extends Interceptor {
   @override
   Future<void> onRequest(
@@ -11,7 +12,7 @@ class HeaderInterceptor extends Interceptor {
     if (token != null && token.isNotEmpty) {
       options.headers['Authorization'] = 'Bearer $token';
     }
-    //options.headers['Content-Type'] = 'application/json';
+
     super.onRequest(options, handler);
   }
 }

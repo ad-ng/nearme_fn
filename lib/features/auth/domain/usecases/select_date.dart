@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// a function to select date and make sure user is older than 18
 Future<void> selectDate(
   BuildContext context,
   TextEditingController dobController,
 ) async {
   // Calculate the date 18 years ago from today
-  DateTime today = DateTime.now();
-  DateTime minDate = DateTime(today.year - 18, today.month, today.day);
+  final today = DateTime.now();
+  final minDate = DateTime(today.year - 18, today.month, today.day);
 
-  DateTime? picked = await showDatePicker(
+  final picked = await showDatePicker(
     context: context,
     firstDate: DateTime(1970),
     lastDate: minDate,

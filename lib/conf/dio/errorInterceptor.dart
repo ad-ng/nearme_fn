@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:nearme_fn/conf/dio/errormodel.dart';
 
+/// an interceptor to handle all dio errors generally
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
