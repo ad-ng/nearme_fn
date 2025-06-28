@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatefulWidget {
+  const MyTextField({
+    required this.hint,
+    required this.isPassword,
+    required this.myController,
+    super.key,
+  });
+
+  /// assigning individual controller to each textfield
+  final TextEditingController myController;
+
+  /// a hint for textfield
   final String hint;
+
+  /// checking if textfield is for password
   final bool isPassword;
-  const MyTextField({super.key, required this.hint, required this.isPassword});
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -13,13 +25,14 @@ class _MyTextFieldState extends State<MyTextField> {
   bool hidePassword = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 53.88,
       child: TextField(
+        controller: widget.myController,
         obscureText: hidePassword,
         obscuringCharacter: '*',
-        style: TextStyle(
-          color: const Color(0xFF2E2E2E),
+        style: const TextStyle(
+          color: Color(0xFF2E2E2E),
           fontSize: 16,
           fontFamily: 'Inter',
           fontWeight: FontWeight.w600,
@@ -28,11 +41,11 @@ class _MyTextFieldState extends State<MyTextField> {
           hintText: widget.hint,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
           ),
           suffixIcon:
               (widget.isPassword)
@@ -43,11 +56,11 @@ class _MyTextFieldState extends State<MyTextField> {
                       });
                     },
                     icon:
-                        (hidePassword)
-                            ? Icon(Icons.visibility_off_outlined)
-                            : Icon(Icons.remove_red_eye_outlined),
+                        hidePassword
+                            ? const Icon(Icons.visibility_off_outlined)
+                            : const Icon(Icons.remove_red_eye_outlined),
                   )
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
         ),
       ),
     );

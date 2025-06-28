@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
+import 'package:nearme_fn/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/otpcard.dart';
 
 class OTPPage extends StatefulWidget {

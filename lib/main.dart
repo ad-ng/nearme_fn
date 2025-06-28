@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/conf/dio/dioService.dart';
+import 'package:nearme_fn/features/auth/data/reposotories/auth_repo_impl.dart';
+import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/authPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
+import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  DioService.instance.setup();
   runApp(const MyApp());
 }
 
@@ -16,13 +22,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Everything NearMe',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF007DD1)),
+    final authRepos = AuthRepoImpl();
+
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => AuthCubit(authRepos))],
+      child: MaterialApp.router(
+        title: 'Everything NearMe',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF007DD1)),
+        ),
+        routerConfig: routes,
       ),
-      routerConfig: routes,
     );
   }
 }
@@ -60,6 +71,11 @@ final GoRouter routes = GoRouter(
       name: 'onboarding',
       path: '/onboarding',
       builder: (context, state) => const OnBoardingScreens(),
+    ),
+    GoRoute(
+      name: 'homePage',
+      path: '/homePage',
+      builder: (context, state) => const HomePage(),
     ),
   ],
 );
