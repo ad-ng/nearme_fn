@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/components/success_message.dart';
 import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
-import 'package:nearme_fn/features/auth/presentation/components/loading_State.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
+import 'package:nearme_fn/components/loading_State.dart';
+import 'package:nearme_fn/components/mybutton.dart';
+import 'package:nearme_fn/components/mytextfield.dart';
 
 class LoginTab extends StatefulWidget {
   const LoginTab({super.key});
@@ -27,9 +28,7 @@ class _LoginTabState extends State<LoginTab> {
           context.goNamed('homePage');
         }
         if (state is AuthError) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.error)));
+          ErrorMessage(context, state.error);
         }
       },
       child: SingleChildScrollView(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
-import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
+import 'package:nearme_fn/components/mybutton.dart';
+import 'package:nearme_fn/components/mytextfield.dart';
 
 class PasswordResetPage extends StatelessWidget {
   const PasswordResetPage({super.key});
