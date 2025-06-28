@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/conf/dio/dioService.dart';
+import 'package:nearme_fn/features/auth/data/reposotories/auth_repo_impl.dart';
+import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/authPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dart';
@@ -18,13 +21,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Everything NearMe',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF007DD1)),
+    final authRepos = AuthRepoImpl();
+
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => AuthCubit(authRepos))],
+      child: MaterialApp.router(
+        title: 'Everything NearMe',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF007DD1)),
+        ),
+        routerConfig: routes,
       ),
-      routerConfig: routes,
     );
   }
 }
