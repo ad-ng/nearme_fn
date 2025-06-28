@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/auth/data/datasources/remote/auth_api_service.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
 
@@ -18,13 +19,12 @@ class _LoginTabState extends State<LoginTab> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 17),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Email',
             style: TextStyle(
-              color: const Color(0xFF6C7278),
+              color: Color(0xFF6C7278),
               fontSize: 16,
               fontFamily: 'Inter',
               fontWeight: FontWeight.w400,
@@ -32,19 +32,19 @@ class _LoginTabState extends State<LoginTab> {
             ),
           ),
 
-          MyTextField(hint: 'Email', isPassword: false),
-          SizedBox(height: 18.74),
-          Text(
+          const MyTextField(hint: 'Email', isPassword: false),
+          const SizedBox(height: 18.74),
+          const Text(
             'Password',
             style: TextStyle(
-              color: const Color(0xFF6C7278),
+              color: Color(0xFF6C7278),
               fontSize: 16,
               fontFamily: 'Inter',
               fontWeight: FontWeight.w400,
               height: 1.50,
             ),
           ),
-          MyTextField(hint: 'Password', isPassword: true),
+          const MyTextField(hint: 'Password', isPassword: true),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -59,11 +59,11 @@ class _LoginTabState extends State<LoginTab> {
                       });
                     },
                   ),
-                  Text(
+                  const Text(
                     'Remember me',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: const Color(0xFF6C7278),
+                      color: Color(0xFF6C7278),
                       fontSize: 14,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w400,
@@ -74,11 +74,11 @@ class _LoginTabState extends State<LoginTab> {
               ),
               TextButton(
                 onPressed: () => context.pushNamed('forgotPassword'),
-                child: Text(
+                child: const Text(
                   'Forgot Password ?',
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    color: const Color(0xFF2E2E2E),
+                    color: Color(0xFF2E2E2E),
                     fontSize: 14,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w600,
@@ -87,8 +87,13 @@ class _LoginTabState extends State<LoginTab> {
               ),
             ],
           ),
-          SizedBox(height: 18.11),
-          MyButton(nameOfAction: 'Log In', actionToPerform: () {}),
+          const SizedBox(height: 18.11),
+          MyButton(
+            nameOfAction: 'Log In',
+            actionToPerform: () {
+              AuthApiService().login();
+            },
+          ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,13 +101,13 @@ class _LoginTabState extends State<LoginTab> {
               Container(
                 height: 1,
                 width: MediaQuery.of(context).size.width * 0.3,
-                decoration: BoxDecoration(color: const Color(0xFFEDF1F3)),
+                decoration: const BoxDecoration(color: Color(0xFFEDF1F3)),
               ),
-              Text(
+              const Text(
                 'Or login with',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: const Color(0xFF6C7278),
+                  color: Color(0xFF6C7278),
                   fontSize: 14,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w400,
@@ -112,41 +117,47 @@ class _LoginTabState extends State<LoginTab> {
               Container(
                 height: 1,
                 width: MediaQuery.of(context).size.width * 0.3,
-                decoration: BoxDecoration(color: const Color(0xFFEDF1F3)),
+                decoration: const BoxDecoration(color: Color(0xFFEDF1F3)),
               ),
             ],
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 width: 82.57,
                 height: 56.22,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(
+                    side: const BorderSide(
                       width: 1.17,
-                      color: const Color(0xFFEFF0F6),
+                      color: Color(0xFFEFF0F6),
                     ),
                     borderRadius: BorderRadius.circular(11.71),
                   ),
                 ),
                 child: SvgPicture.asset('././lib/images/google.svg'),
               ),
-              SizedBox(width: 17.57),
+              const SizedBox(width: 17.57),
               Container(
                 width: 82.57,
                 height: 56.22,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(
+                    side: const BorderSide(
                       width: 1.17,
-                      color: const Color(0xFFEFF0F6),
+                      color: Color(0xFFEFF0F6),
                     ),
                     borderRadius: BorderRadius.circular(11.71),
                   ),
