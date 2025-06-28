@@ -16,17 +16,17 @@ class UserModel {
   String role;
   UserModel({
     required this.id,
+    required this.email,
+    required this.isVerified,
+    required this.role,
     this.firstName,
     this.lastName,
     this.gender,
-    required this.email,
-    required this.isVerified,
     this.country,
     this.Status,
     this.profileImg,
     this.dob,
     this.phoneNumber,
-    required this.role,
   });
 
   Map<String, dynamic> toMap() {
