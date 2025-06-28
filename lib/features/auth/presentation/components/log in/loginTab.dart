@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nearme_fn/features/auth/data/datasources/remote/auth_api_service.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/mytextfield.dart';
 
@@ -88,12 +87,7 @@ class _LoginTabState extends State<LoginTab> {
             ],
           ),
           const SizedBox(height: 18.11),
-          MyButton(
-            nameOfAction: 'Log In',
-            actionToPerform: () {
-              AuthApiService().login();
-            },
-          ),
+          MyButton(nameOfAction: 'Log In', actionToPerform: () {}),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -9,11 +9,11 @@ class AuthApiService {
   final Dio _dio = DioService.instance.dio;
 
   ///logging in a user
-  Future<UserModel> login() async {
+  Future<UserModel> login(String email, String password) async {
     try {
       final response = await _dio.post<Map<String, dynamic>>(
         '/auth/login',
-        data: {'email': 'adolphengoga@gmail.com', 'password': 'test@123'},
+        data: {'email': email, 'password': password},
       );
 
       final token = response.data?['token'] as String;
