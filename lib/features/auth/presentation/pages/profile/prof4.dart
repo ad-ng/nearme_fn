@@ -4,20 +4,27 @@ import 'package:nearme_fn/components/mybutton.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
 ///
-class Prof3 extends StatefulWidget {
+class Prof4 extends StatefulWidget {
   ///
-  const Prof3({super.key});
+  const Prof4({super.key});
 
   @override
-  State<Prof3> createState() => _Prof3State();
+  State<Prof4> createState() => _Prof4State();
 }
 
-class _Prof3State extends State<Prof3> {
+class _Prof4State extends State<Prof4> {
+  List<String> travelItems = [
+    'Select Your Status',
+    'International',
+    'Regional',
+    'Local',
+  ];
+  String travelValue = 'Select Your Status';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white),
       backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -28,7 +35,7 @@ class _Prof3State extends State<Prof3> {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: '3',
+                      text: '4',
                       style: TextStyle(
                         color: Color(0xFF007DD1),
                         fontSize: 14,
@@ -62,7 +69,7 @@ class _Prof3State extends State<Prof3> {
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                const MyStepper(isCompleted: false),
+                const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: false),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
@@ -72,7 +79,7 @@ class _Prof3State extends State<Prof3> {
             ),
             const SizedBox(height: 100),
             const Text(
-              'Where are you from?',
+              'Travel Status',
               style: TextStyle(
                 color: Color(0xFF007DD1),
                 fontSize: 32,
@@ -84,7 +91,7 @@ class _Prof3State extends State<Prof3> {
             const SizedBox(
               width: 260.02,
               child: Text(
-                'Knowing where you’re from helps us customize your experience.',
+                'Your Travel Status helps us improve your recommendations.',
                 style: TextStyle(
                   color: Color(0xFF6C7278),
                   fontSize: 16,
@@ -94,9 +101,9 @@ class _Prof3State extends State<Prof3> {
                 ),
               ),
             ),
-            const SizedBox(height: 44),
+            const SizedBox(height: 84.11),
             const Text(
-              'Country Name',
+              'Travel Status',
               style: TextStyle(
                 color: Color(0xFF6C7278),
                 fontSize: 16,
@@ -105,11 +112,41 @@ class _Prof3State extends State<Prof3> {
                 height: 1.50,
               ),
             ),
-            const SizedBox(height: 100),
+            Container(
+              height: 53.88,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(11.71),
+                border: Border.all(width: 1.17, color: const Color(0xFFEDF1F3)),
+              ),
+              child: DropdownButton<String>(
+                value: travelValue,
+                underline: const SizedBox(),
+                isExpanded: true,
+                style: const TextStyle(
+                  color: Color(0xFF2E2E2E),
+                  fontSize: 16,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                  height: 1.50,
+                ),
+                items:
+                    travelItems.map((String item) {
+                      return DropdownMenuItem(value: item, child: Text(item));
+                    }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    travelValue = value!;
+                  });
+                },
+              ),
+            ),
+            const SizedBox(height: 129),
             MyButton(
-              nameOfAction: 'continue',
+              nameOfAction: 'Continue',
               actionToPerform: () {
-                context.pushNamed('prof4');
+                context.pushNamed('prof5');
               },
             ),
           ],

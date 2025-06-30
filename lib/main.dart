@@ -13,6 +13,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dar
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof1.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof2.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
@@ -101,6 +102,11 @@ final GoRouter routes = GoRouter(
       name: 'prof3',
       path: '/prof3',
       builder: (context, state) => const Prof3(),
+    ),
+    GoRoute(
+      name: 'prof4',
+      path: '/prof4',
+      builder: (context, state) => const Prof4(),
     ),
     GoRoute(
       name: 'prof5',
