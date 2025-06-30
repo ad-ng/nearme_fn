@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
+import 'package:nearme_fn/features/auth/presentation/components/profs/interest_card.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
 ///
-class Prof3 extends StatefulWidget {
+class Prof5 extends StatefulWidget {
   ///
-  const Prof3({super.key});
+  const Prof5({super.key});
 
   @override
-  State<Prof3> createState() => _Prof3State();
+  State<Prof5> createState() => _Prof5State();
 }
 
-class _Prof3State extends State<Prof3> {
+class _Prof5State extends State<Prof5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class _Prof3State extends State<Prof3> {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: '3',
+                      text: '5',
                       style: TextStyle(
                         color: Color(0xFF007DD1),
                         fontSize: 14,
@@ -62,9 +62,9 @@ class _Prof3State extends State<Prof3> {
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                const MyStepper(isCompleted: false),
+                const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                const MyStepper(isCompleted: false),
+                const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: false),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
@@ -72,7 +72,7 @@ class _Prof3State extends State<Prof3> {
             ),
             const SizedBox(height: 100),
             const Text(
-              'Where are you from?',
+              'Your Interests?',
               style: TextStyle(
                 color: Color(0xFF007DD1),
                 fontSize: 32,
@@ -84,7 +84,7 @@ class _Prof3State extends State<Prof3> {
             const SizedBox(
               width: 260.02,
               child: Text(
-                'Knowing where you’re from helps us customize your experience.',
+                'By choosing your interests it will make it easier to recommend you best deals!',
                 style: TextStyle(
                   color: Color(0xFF6C7278),
                   fontSize: 16,
@@ -94,24 +94,25 @@ class _Prof3State extends State<Prof3> {
                 ),
               ),
             ),
-            const SizedBox(height: 44),
-            const Text(
-              'Country Name',
-              style: TextStyle(
-                color: Color(0xFF6C7278),
-                fontSize: 16,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
+            const SizedBox(height: 20),
+            const Wrap(
+              children: [
+                InterestCard(interestName: 'Restaurant', isSelected: true),
+                InterestCard(interestName: 'Hotels', isSelected: false),
+                InterestCard(interestName: 'Tourism', isSelected: false),
+                InterestCard(interestName: 'Transport', isSelected: false),
+                InterestCard(interestName: 'Government', isSelected: false),
+                InterestCard(interestName: 'News', isSelected: false),
+                InterestCard(interestName: 'Restaurant', isSelected: true),
+                InterestCard(interestName: 'Hotels', isSelected: true),
+                InterestCard(interestName: 'Tourism', isSelected: true),
+                InterestCard(interestName: 'Transport', isSelected: false),
+                InterestCard(interestName: 'Government', isSelected: true),
+                InterestCard(interestName: 'News', isSelected: false),
+              ],
             ),
             const SizedBox(height: 100),
-            MyButton(
-              nameOfAction: 'continue',
-              actionToPerform: () {
-                context.pushNamed('prof5');
-              },
-            ),
+            MyButton(nameOfAction: 'continue', actionToPerform: () {}),
           ],
         ),
       ),
