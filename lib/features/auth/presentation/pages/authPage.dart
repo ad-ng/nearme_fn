@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nearme_fn/features/auth/presentation/components/authTabsHeader.dart';
+import 'package:nearme_fn/features/auth/presentation/components/auth_tabs_header.dart';
 import 'package:nearme_fn/features/auth/presentation/components/log%20in/loginTab.dart';
 import 'package:nearme_fn/features/auth/presentation/components/register/registerTab.dart';
 
+/// auth page
 class AuthPage extends StatefulWidget {
+  ///
   const AuthPage({super.key});
 
   @override
@@ -34,7 +36,7 @@ class _AuthPageState extends State<AuthPage> {
                     child: Text(
                       'Get Started now',
                       style: TextStyle(
-                        color: const Color(0xFF007DD1),
+                        color: Color(0xFF007DD1),
                         fontSize: 32,
                         fontFamily: 'Urbanist',
                         fontWeight: FontWeight.w700,
@@ -48,7 +50,7 @@ class _AuthPageState extends State<AuthPage> {
                         TextSpan(
                           text: 'Create an account or log in\n to explore ',
                           style: TextStyle(
-                            color: const Color(0xFF6C7278) /* Grey */,
+                            color: Color(0xFF6C7278),
                             fontSize: 16,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w400,
@@ -58,7 +60,7 @@ class _AuthPageState extends State<AuthPage> {
                         TextSpan(
                           text: 'Everything',
                           style: TextStyle(
-                            color: const Color(0xFF007DD1),
+                            color: Color(0xFF007DD1),
                             fontSize: 16,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w700,

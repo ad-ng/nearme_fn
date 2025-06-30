@@ -10,7 +10,9 @@ import 'package:nearme_fn/components/mybutton.dart';
 import 'package:nearme_fn/components/mytextfield.dart';
 import 'package:nearme_fn/features/auth/presentation/components/register/phoneField.dart';
 
+///
 class RegisterTab extends StatefulWidget {
+  ///
   const RegisterTab({super.key});
 
   @override
@@ -30,7 +32,7 @@ class _RegisterTabState extends State<RegisterTab> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
-          context.goNamed('homePage');
+          context.goNamed('prof1');
         }
         if (state is AuthError) {
           ErrorMessage(context, state.error);
