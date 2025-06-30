@@ -11,6 +11,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dar
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof1.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof2.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
@@ -88,6 +89,11 @@ final GoRouter routes = GoRouter(
       name: 'prof1',
       path: '/prof1',
       builder: (context, state) => const Prof1(),
+    ),
+    GoRoute(
+      name: 'prof2',
+      path: '/prof2',
+      builder: (context, state) => const Prof2(),
     ),
   ],
 );
