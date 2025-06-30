@@ -60,4 +60,30 @@ class AuthApiService {
       throw Exception('Something went wrong: $e');
     }
   }
+
+  ///continue with google a user
+  Future<UserModel> continueWithGoogle(String accessToken) async {
+    final preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/auth/google',
+        data: {'accessToken': accessToken},
+      );
+
+      final token = response.data?['token'] as String;
+      final dataJson = response.data?['data'] as Map<String, dynamic>;
+      final currentUser = UserModel.fromMap(dataJson);
+
+      await TokenStore.setToken(token);
+      await UserPreferences().saveLocalUser(currentUser);
+
+      return currentUser;
+    } on DioException catch (e) {
+      throw Exception(e.message);
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
 }
