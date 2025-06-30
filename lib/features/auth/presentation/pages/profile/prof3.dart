@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
-import 'package:nearme_fn/components/mytextfield.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
-class Prof2 extends StatelessWidget {
-  const Prof2({super.key});
+///
+class Prof3 extends StatefulWidget {
+  ///
+  const Prof3({super.key});
 
+  @override
+  State<Prof3> createState() => _Prof3State();
+}
+
+class _Prof3State extends State<Prof3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +27,7 @@ class Prof2 extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: '2',
+                      text: '3',
                       style: TextStyle(
                         color: Color(0xFF007DD1),
                         fontSize: 14,
@@ -54,7 +59,7 @@ class Prof2 extends StatelessWidget {
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                const MyStepper(isCompleted: false),
+                const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: false),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
@@ -66,7 +71,7 @@ class Prof2 extends StatelessWidget {
             ),
             const SizedBox(height: 100),
             const Text(
-              'Name Confirmation',
+              'Where are you from?',
               style: TextStyle(
                 color: Color(0xFF007DD1),
                 fontSize: 32,
@@ -78,7 +83,7 @@ class Prof2 extends StatelessWidget {
             const SizedBox(
               width: 260.02,
               child: Text(
-                'Are these the name you want to keep using?',
+                'Knowing where you’re from helps us customize your experience.',
                 style: TextStyle(
                   color: Color(0xFF6C7278),
                   fontSize: 16,
@@ -90,7 +95,7 @@ class Prof2 extends StatelessWidget {
             ),
             const SizedBox(height: 44),
             const Text(
-              'First Name',
+              'Country Name',
               style: TextStyle(
                 color: Color(0xFF6C7278),
                 fontSize: 16,
@@ -99,34 +104,8 @@ class Prof2 extends StatelessWidget {
                 height: 1.50,
               ),
             ),
-            MyTextField(
-              hint: 'First Name',
-              isPassword: false,
-              myController: TextEditingController(),
-            ),
-            const SizedBox(height: 15),
-            const Text(
-              'Last Name',
-              style: TextStyle(
-                color: Color(0xFF6C7278),
-                fontSize: 16,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
-            ),
-            MyTextField(
-              hint: 'Last Name',
-              isPassword: false,
-              myController: TextEditingController(),
-            ),
-            const SizedBox(height: 74),
-            MyButton(
-              nameOfAction: 'Continue',
-              actionToPerform: () {
-                context.pushNamed('prof3');
-              },
-            ),
+            const SizedBox(height: 100),
+            MyButton(nameOfAction: 'continue', actionToPerform: () {}),
           ],
         ),
       ),
