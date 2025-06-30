@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
@@ -13,6 +14,7 @@ class Prof3 extends StatefulWidget {
 }
 
 class _Prof3State extends State<Prof3> {
+  final countryController = TextEditingController(text: 'Rwanda');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +105,51 @@ class _Prof3State extends State<Prof3> {
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w400,
                 height: 1.50,
+              ),
+            ),
+            SizedBox(
+              height: 53.88,
+              child: TextField(
+                controller: countryController,
+                readOnly: true,
+                style: const TextStyle(
+                  color: Color(0xFF2E2E2E),
+                  fontSize: 16,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                  height: 1.50,
+                ),
+                decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Color(0xFFEDF1F3)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Color(0xFFEDF1F3)),
+                  ),
+                  suffixIcon: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEDF1F3),
+                      border: Border.all(color: const Color(0xFFEDF1F3)),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
+                      ),
+                    ),
+                    child: CountryCodePicker(
+                      onChanged: (value) {
+                        countryController.text = value.name!;
+                      },
+                      initialSelection: 'RW',
+                      hideHeaderText: true,
+                      hideMainText: true,
+                      showFlag: false,
+                      showCountryOnly: true,
+                      showDropDownButton: true,
+                    ),
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 100),
