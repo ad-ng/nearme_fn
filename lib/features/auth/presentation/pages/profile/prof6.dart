@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
-import 'package:nearme_fn/features/auth/presentation/components/profs/interest_card.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
-///
-class Prof5 extends StatefulWidget {
-  ///
-  const Prof5({super.key});
+class Prof6 extends StatefulWidget {
+  const Prof6({super.key});
 
   @override
-  State<Prof5> createState() => _Prof5State();
+  State<Prof6> createState() => _Prof6State();
 }
 
-class _Prof5State extends State<Prof5> {
+class _Prof6State extends State<Prof6> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +27,7 @@ class _Prof5State extends State<Prof5> {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: '5',
+                      text: '6',
                       style: TextStyle(
                         color: Color(0xFF007DD1),
                         fontSize: 14,
@@ -67,13 +65,13 @@ class _Prof5State extends State<Prof5> {
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
                 const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
-                const MyStepper(isCompleted: false),
+                const MyStepper(isCompleted: true),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.01),
               ],
             ),
             const SizedBox(height: 100),
             const Text(
-              'Your Interests?',
+              'Profile Picture',
               style: TextStyle(
                 color: Color(0xFF007DD1),
                 fontSize: 32,
@@ -85,9 +83,9 @@ class _Prof5State extends State<Prof5> {
             const SizedBox(
               width: 260.02,
               child: Text(
-                'By choosing your interests it will make it easier to recommend you best deals!',
+                'Choose a photo that best represents you!',
                 style: TextStyle(
-                  color: Color(0xFF6C7278),
+                  color: const Color(0xFF6C7278) /* Grey */,
                   fontSize: 16,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w400,
@@ -96,27 +94,41 @@ class _Prof5State extends State<Prof5> {
               ),
             ),
             const SizedBox(height: 20),
-            const Wrap(
+            Stack(
               children: [
-                InterestCard(interestName: 'Restaurant', isSelected: true),
-                InterestCard(interestName: 'Hotels', isSelected: false),
-                InterestCard(interestName: 'Tourism', isSelected: false),
-                InterestCard(interestName: 'Transport', isSelected: false),
-                InterestCard(interestName: 'Government', isSelected: false),
-                InterestCard(interestName: 'News', isSelected: false),
-                InterestCard(interestName: 'Restaurant', isSelected: true),
-                InterestCard(interestName: 'Hotels', isSelected: true),
-                InterestCard(interestName: 'Tourism', isSelected: true),
-                InterestCard(interestName: 'Transport', isSelected: false),
-                InterestCard(interestName: 'Government', isSelected: true),
-                InterestCard(interestName: 'News', isSelected: false),
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(40),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFE6F2FA),
+                      shape: BoxShape.circle,
+                    ),
+                    width: 207,
+                    height: 207,
+                    child: SvgPicture.asset('././lib/images/user.svg'),
+                  ),
+                ),
+                Positioned(
+                  right: MediaQuery.of(context).size.width * 0.21,
+                  bottom: MediaQuery.of(context).size.height * 0.01,
+                  child: Container(
+                    width: 42,
+                    height: 42,
+                    padding: const EdgeInsets.all(7),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFB0D7F1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: SvgPicture.asset('././lib/images/camera.svg'),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 100),
             MyButton(
-              nameOfAction: 'continue',
+              nameOfAction: 'Complete Profile',
               actionToPerform: () {
-                context.pushNamed('prof6');
+                context.goNamed('homePage');
               },
             ),
           ],
