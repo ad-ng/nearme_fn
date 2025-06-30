@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/error_message.dart';
+import 'package:nearme_fn/features/auth/domain/usecases/sign_in_with_google.dart';
 import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:nearme_fn/components/loading_State.dart';
 import 'package:nearme_fn/components/mybutton.dart';
@@ -20,6 +21,7 @@ class _LoginTabState extends State<LoginTab> {
   final TextEditingController passwordController = TextEditingController();
 
   bool rememberMe = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
@@ -180,10 +182,6 @@ class _LoginTabState extends State<LoginTab> {
                   Container(
                     width: 82.57,
                     height: 56.22,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
                     decoration: ShapeDecoration(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -194,7 +192,10 @@ class _LoginTabState extends State<LoginTab> {
                         borderRadius: BorderRadius.circular(11.71),
                       ),
                     ),
-                    child: SvgPicture.asset('././lib/images/apple-logo.svg'),
+                    child: IconButton(
+                      onPressed: signInWithGoogle,
+                      icon: SvgPicture.asset('././lib/images/apple-logo.svg'),
+                    ),
                   ),
                 ],
               ),
