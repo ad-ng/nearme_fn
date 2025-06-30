@@ -10,6 +10,12 @@ import 'package:nearme_fn/features/auth/presentation/pages/forgotPassword.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/onBoardingScreens.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/otpPage.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/passwordResetPage.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof1.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof2.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
+import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
@@ -82,6 +88,36 @@ final GoRouter routes = GoRouter(
       name: 'homePage',
       path: '/homePage',
       builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      name: 'prof1',
+      path: '/prof1',
+      builder: (context, state) => const Prof1(),
+    ),
+    GoRoute(
+      name: 'prof2',
+      path: '/prof2',
+      builder: (context, state) => const Prof2(),
+    ),
+    GoRoute(
+      name: 'prof3',
+      path: '/prof3',
+      builder: (context, state) => const Prof3(),
+    ),
+    GoRoute(
+      name: 'prof4',
+      path: '/prof4',
+      builder: (context, state) => const Prof4(),
+    ),
+    GoRoute(
+      name: 'prof5',
+      path: '/prof5',
+      builder: (context, state) => const Prof5(),
+    ),
+    GoRoute(
+      name: 'prof6',
+      path: '/prof6',
+      builder: (context, state) => const Prof6(),
     ),
   ],
 );

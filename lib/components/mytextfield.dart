@@ -41,11 +41,11 @@ class _MyTextFieldState extends State<MyTextField> {
           hintText: widget.hint,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Color(0xFFEDF1F3)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Color(0xFFEDF1F3)),
           ),
           suffixIcon:
               (widget.isPassword)

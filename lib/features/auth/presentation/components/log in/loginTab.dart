@@ -9,7 +9,9 @@ import 'package:nearme_fn/components/loading_State.dart';
 import 'package:nearme_fn/components/mybutton.dart';
 import 'package:nearme_fn/components/mytextfield.dart';
 
+////
 class LoginTab extends StatefulWidget {
+  ///
   const LoginTab({super.key});
 
   @override
@@ -176,7 +178,12 @@ class _LoginTabState extends State<LoginTab> {
                         borderRadius: BorderRadius.circular(11.71),
                       ),
                     ),
-                    child: SvgPicture.asset('././lib/images/google.svg'),
+                    child: IconButton(
+                      onPressed: () {
+                        context.goNamed('prof1');
+                      },
+                      icon: SvgPicture.asset('././lib/images/google.svg'),
+                    ),
                   ),
                   const SizedBox(width: 17.57),
                   Container(

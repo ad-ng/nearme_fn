@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+///
 class MyButton extends StatefulWidget {
-  final String nameOfAction;
-  final Function actionToPerform;
+  ///
   const MyButton({
-    super.key,
     required this.nameOfAction,
     required this.actionToPerform,
+    super.key,
   });
+  final String nameOfAction;
+  final Function actionToPerform;
 
   @override
   State<MyButton> createState() => _MyButtonState();
@@ -19,7 +21,7 @@ class _MyButtonState extends State<MyButton> {
     return Container(
       height: 56.22,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: const Color(0xFF007DD1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Center(
