@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
 import 'package:nearme_fn/components/mytextfield.dart';
+import 'package:nearme_fn/features/auth/data/datasources/local/user_preferences.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
+///
 class Prof2 extends StatelessWidget {
+  ///
   const Prof2({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final firstNameController = TextEditingController();
+    final lastNameController = TextEditingController();
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.white),
       backgroundColor: Colors.white,
@@ -89,36 +94,51 @@ class Prof2 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 44),
-            const Text(
-              'First Name',
-              style: TextStyle(
-                color: Color(0xFF6C7278),
-                fontSize: 16,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
-            ),
-            MyTextField(
-              hint: 'First Name',
-              isPassword: false,
-              myController: TextEditingController(),
-            ),
-            const SizedBox(height: 15),
-            const Text(
-              'Last Name',
-              style: TextStyle(
-                color: Color(0xFF6C7278),
-                fontSize: 16,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
-            ),
-            MyTextField(
-              hint: 'Last Name',
-              isPassword: false,
-              myController: TextEditingController(),
+            FutureBuilder(
+              future: UserPreferences().getLocalUser(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  firstNameController.text = snapshot.data!.firstName!;
+                  lastNameController.text = snapshot.data!.lastName!;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'First Name',
+                        style: TextStyle(
+                          color: Color(0xFF6C7278),
+                          fontSize: 16,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                          height: 1.50,
+                        ),
+                      ),
+                      MyTextField(
+                        hint: 'First Name',
+                        isPassword: false,
+                        myController: firstNameController,
+                      ),
+                      const SizedBox(height: 15),
+                      const Text(
+                        'Last Name',
+                        style: TextStyle(
+                          color: Color(0xFF6C7278),
+                          fontSize: 16,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                          height: 1.50,
+                        ),
+                      ),
+                      MyTextField(
+                        hint: 'Last Name',
+                        isPassword: false,
+                        myController: lastNameController,
+                      ),
+                    ],
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
             const SizedBox(height: 74),
             MyButton(
