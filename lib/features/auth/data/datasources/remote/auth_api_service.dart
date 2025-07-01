@@ -86,4 +86,25 @@ class AuthApiService {
       throw Exception('Something went wrong: $e');
     }
   }
+
+  ///updating user names
+  Future<UserModel> updateNames(String firstName, String lastName) async {
+    try {
+      final response = await _dio.patch<Map<String, dynamic>>(
+        '/user/names',
+        data: {'firstName': firstName, 'lastName': lastName},
+      );
+
+      final dataJson = response.data?['data'] as Map<String, dynamic>;
+      final currentUser = UserModel.fromMap(dataJson);
+
+      await UserPreferences().saveLocalUser(currentUser);
+
+      return currentUser;
+    } on DioException catch (e) {
+      throw Exception(e.message);
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
 }
