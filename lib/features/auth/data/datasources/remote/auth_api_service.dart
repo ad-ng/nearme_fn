@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:nearme_fn/conf/dio/dioService.dart';
 import 'package:nearme_fn/features/auth/data/datasources/local/tokenstore.dart';
 import 'package:nearme_fn/features/auth/data/datasources/local/user_preferences.dart';
+import 'package:nearme_fn/features/auth/data/models/category_model.dart';
 import 'package:nearme_fn/features/auth/data/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -143,6 +144,27 @@ class AuthApiService {
       await UserPreferences().saveLocalUser(currentUser);
 
       return currentUser;
+    } on DioException catch (e) {
+      throw Exception(e.message);
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
+
+  /// Fetching all categories
+  Future<List<CategoryModel>> fetchAllCategories() async {
+    try {
+      final response = await _dio.get<Map<String, dynamic>>('/category');
+
+      final dataJson = response.data?['data'];
+
+      if (dataJson != null && dataJson is List) {
+        return dataJson
+            .map((json) => CategoryModel.fromMap(json as Map<String, dynamic>))
+            .toList();
+      } else {
+        throw Exception('Expected a list but got ${dataJson.runtimeType}');
+      }
     } on DioException catch (e) {
       throw Exception(e.message);
     } catch (e) {
