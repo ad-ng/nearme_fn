@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:nearme_fn/components/error_message.dart';
 import 'package:nearme_fn/components/loading_State.dart';
 import 'package:nearme_fn/features/auth/data/models/user_model.dart';
@@ -8,7 +9,6 @@ import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:nearme_fn/features/auth/presentation/components/register/mycutomdatePicker.dart';
 import 'package:nearme_fn/components/mybutton.dart';
 import 'package:nearme_fn/components/mytextfield.dart';
-import 'package:nearme_fn/features/auth/presentation/components/register/phoneField.dart';
 
 ///
 class RegisterTab extends StatefulWidget {
@@ -26,6 +26,8 @@ class _RegisterTabState extends State<RegisterTab> {
   TextEditingController dob = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController password = TextEditingController();
+
+  String phoneValue = '';
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +137,34 @@ class _RegisterTabState extends State<RegisterTab> {
                   height: 1.50,
                 ),
               ),
-              PhoneField(myPhone: phoneNumber),
+              SizedBox(
+                height: 70,
+                child: IntlPhoneField(
+                  onChanged: (value) {
+                    phoneValue = value.countryCode + value.number;
+                  },
+                  controller: phoneNumber,
+                  dropdownIconPosition: IconPosition.trailing,
+                  style: const TextStyle(fontWeight: FontWeight.w500),
+                  flagsButtonMargin: const EdgeInsets.only(left: 6),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  initialCountryCode: 'RW',
+                  showDropdownIcon: false,
+                ),
+              ),
               const SizedBox(height: 10),
               const Text(
                 'Set Password',
@@ -170,7 +199,7 @@ class _RegisterTabState extends State<RegisterTab> {
                               dob.text != ''
                                   ? '${DateTime.parse(dob.text).toIso8601String()}Z'
                                   : '${DateTime.now().toIso8601String()}Z',
-                          phoneNumber: phoneNumber.text,
+                          phoneNumber: phoneValue,
                           password: password.text,
                         ),
                       );

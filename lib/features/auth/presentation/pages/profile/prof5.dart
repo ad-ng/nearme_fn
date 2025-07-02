@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
+import 'package:nearme_fn/features/auth/data/datasources/remote/auth_api_service.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/interest_card.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
@@ -96,21 +97,19 @@ class _Prof5State extends State<Prof5> {
               ),
             ),
             const SizedBox(height: 20),
-            const Wrap(
-              children: [
-                InterestCard(interestName: 'Restaurant', isSelected: true),
-                InterestCard(interestName: 'Hotels', isSelected: false),
-                InterestCard(interestName: 'Tourism', isSelected: false),
-                InterestCard(interestName: 'Transport', isSelected: false),
-                InterestCard(interestName: 'Government', isSelected: false),
-                InterestCard(interestName: 'News', isSelected: false),
-                InterestCard(interestName: 'Restaurant', isSelected: true),
-                InterestCard(interestName: 'Hotels', isSelected: true),
-                InterestCard(interestName: 'Tourism', isSelected: true),
-                InterestCard(interestName: 'Transport', isSelected: false),
-                InterestCard(interestName: 'Government', isSelected: true),
-                InterestCard(interestName: 'News', isSelected: false),
-              ],
+            FutureBuilder(
+              future: AuthApiService().fetchAllCategories(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Wrap(
+                    children:
+                        snapshot.data!
+                            .map((cat) => InterestCard(interestName: cat.name))
+                            .toList(),
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
             const SizedBox(height: 100),
             MyButton(
