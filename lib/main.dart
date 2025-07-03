@@ -16,7 +16,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
-import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
 void main() async {
@@ -85,9 +85,9 @@ final GoRouter routes = GoRouter(
       builder: (context, state) => const OnBoardingScreens(),
     ),
     GoRoute(
-      name: 'homePage',
-      path: '/homePage',
-      builder: (context, state) => const HomePage(),
+      name: 'landingPage',
+      path: '/landingPage',
+      builder: (context, state) => const LandingPage(),
     ),
     GoRoute(
       name: 'prof1',
