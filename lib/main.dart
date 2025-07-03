@@ -17,6 +17,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
 import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
 void main() async {
@@ -118,6 +119,14 @@ final GoRouter routes = GoRouter(
       name: 'prof6',
       path: '/prof6',
       builder: (context, state) => const Prof6(),
+    ),
+    GoRoute(
+      name: 'subCategoryPage',
+      path: '/subCategoryPage',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return SubCategoryPage(title: title);
+      },
     ),
   ],
 );
