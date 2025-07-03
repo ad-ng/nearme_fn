@@ -104,7 +104,7 @@ class _Prof5State extends State<Prof5> {
                   return Wrap(
                     children:
                         snapshot.data!
-                            .map((cat) => InterestCard(interestName: cat.name))
+                            .map((cat) => InterestCard(category: cat))
                             .toList(),
                   );
                 }

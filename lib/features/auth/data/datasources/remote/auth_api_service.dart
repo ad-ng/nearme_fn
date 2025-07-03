@@ -171,4 +171,35 @@ class AuthApiService {
       throw Exception('Something went wrong: $e');
     }
   }
+
+  /// saving user interest
+  Future<dynamic> saveInterest(int categoryId) async {
+    try {
+      final response = await _dio.post<Map<String, dynamic>>(
+        '/user/interest',
+        data: {'categoryId': categoryId},
+      );
+
+      return response.data;
+    } on DioException catch (e) {
+      throw Exception(e.message);
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
+
+  /// delete user interest
+  Future<dynamic> deleteInterest(int categoryId) async {
+    try {
+      final response = await _dio.delete<Map<String, dynamic>>(
+        '/user/interest/$categoryId',
+      );
+
+      return response.data;
+    } on DioException catch (e) {
+      throw Exception(e.message);
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
 }

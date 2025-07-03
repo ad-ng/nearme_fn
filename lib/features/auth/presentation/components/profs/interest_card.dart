@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:nearme_fn/features/auth/data/datasources/remote/auth_api_service.dart';
+import 'package:nearme_fn/features/auth/data/models/category_model.dart';
 
 ///
 class InterestCard extends StatefulWidget {
   ///
-  const InterestCard({required this.interestName, super.key});
+  const InterestCard({required this.category, super.key});
 
   ///
-  final String interestName;
+  final CategoryModel category;
 
   @override
   State<InterestCard> createState() => _InterestCardState();
@@ -14,13 +16,27 @@ class InterestCard extends StatefulWidget {
 
 class _InterestCardState extends State<InterestCard> {
   bool isSelected = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         setState(() {
           isSelected = !isSelected;
         });
+
+        if (isSelected) {
+          await AuthApiService().saveInterest(widget.category.id!);
+        }
+
+        if (!isSelected) {
+          await AuthApiService().deleteInterest(widget.category.id!);
+        }
       },
       child: Container(
         decoration: BoxDecoration(
@@ -36,7 +52,7 @@ class _InterestCardState extends State<InterestCard> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              widget.interestName,
+              widget.category.name,
               textAlign: TextAlign.center,
               style:
                   isSelected
