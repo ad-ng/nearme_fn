@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nearme_fn/features/home/presentation/components/home_article.dart';
+import 'package:nearme_fn/features/home/presentation/components/home_cat.dart';
 import 'package:nearme_fn/features/home/presentation/components/popular_card.dart';
 import 'package:nearme_fn/features/home/presentation/components/recommended_card.dart';
 
@@ -82,7 +83,61 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            const SizedBox(height: 18),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeCat(
+                  homeCatTitle: 'Travel Info',
+                  homeCatIcon: '././lib/images/Frame 427319335.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Transport Service',
+                  homeCatIcon: '././lib/images/Frame 427319336.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Accomodation & booking',
+                  homeCatIcon: '././lib/images/building-office-2.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Activities & Things To Do',
+                  homeCatIcon: '././lib/images/Frame 427319338.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Food & Dinning',
+                  homeCatIcon: '././lib/images/Frame 427319339.svg',
+                ),
+              ],
+            ),
             const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeCat(
+                  homeCatTitle: 'Shopping',
+                  homeCatIcon: '././lib/images/shopping-bag.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Health & Wellness',
+                  homeCatIcon: '././lib/images/Frame 427319341.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Government Services',
+                  homeCatIcon: '././lib/images/briefcase.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'Local \nCulture',
+                  homeCatIcon: '././lib/images/Frame 427319343.svg',
+                ),
+                HomeCat(
+                  homeCatTitle: 'More',
+                  homeCatIcon: '././lib/images/Layer 2.svg',
+                ),
+              ],
+            ),
+            const SizedBox(height: 22),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
