@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/mybutton.dart';
+import 'package:nearme_fn/features/auth/data/datasources/remote/auth_api_service.dart';
 import 'package:nearme_fn/features/auth/presentation/components/profs/my_stepper.dart';
 
 ///
@@ -138,6 +139,7 @@ class _Prof4State extends State<Prof4> {
                 onChanged: (value) {
                   setState(() {
                     travelValue = value!;
+                    print(travelValue);
                   });
                 },
               ),
@@ -145,7 +147,10 @@ class _Prof4State extends State<Prof4> {
             const SizedBox(height: 129),
             MyButton(
               nameOfAction: 'Continue',
-              actionToPerform: () {
+              actionToPerform: () async {
+                await AuthApiService().updateTravelStatus(
+                  (travelValue == 'Select Your Status') ? 'Local' : travelValue,
+                );
                 context.pushNamed('prof5');
               },
             ),
