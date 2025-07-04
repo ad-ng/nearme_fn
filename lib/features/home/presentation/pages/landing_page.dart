@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nearme_fn/features/explore/presentation/pages/explore_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 import 'package:nearme_fn/features/profile/presentation/pages/profile_page.dart';
 
@@ -15,7 +16,7 @@ class _LandingPageState extends State<LandingPage> {
   int currentPageIndex = 0;
   List<Widget> pages = [
     const HomePage(),
-    const Center(child: Text('E X P L O R E')),
+    const ExplorePage(),
     const Center(child: Text('M A P')),
     const Center(child: Text('S A V E D')),
     const ProfilePage(),
