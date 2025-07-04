@@ -15,6 +15,13 @@ class BusinessPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Color(0xFF007DD1),
+          ),
+        ),
         centerTitle: false,
         title: const Text(
           'Back',
@@ -63,7 +70,7 @@ class BusinessPage extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 itemCount: 3,
-                itemBuilder: (context, index) => BusinessCard(),
+                itemBuilder: (context, index) =>const BusinessCard(),
               ),
             ),
           ],

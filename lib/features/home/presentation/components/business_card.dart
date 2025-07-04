@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 ///
 class BusinessCard extends StatelessWidget {
@@ -118,21 +119,28 @@ class BusinessCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  width: 85,
-                  height: 29,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFF007DD1)),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'View Business',
-                      style: TextStyle(
-                        color: Color(0xFF007DD1),
-                        fontSize: 9,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap:
+                      () => context.pushNamed(
+                        'actualBusinessPage',
+                        extra: 'title',
+                      ),
+                  child: Container(
+                    width: 85,
+                    height: 29,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFF007DD1)),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'View Business',
+                        style: TextStyle(
+                          color: Color(0xFF007DD1),
+                          fontSize: 9,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),

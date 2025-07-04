@@ -17,6 +17,13 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Color(0xFF007DD1),
+          ),
+        ),
         backgroundColor: Colors.white,
         title: const Text(
           'Back',

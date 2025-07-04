@@ -275,7 +275,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Popular Nearby',
+                  'Articles',
                   style: TextStyle(
                     color: Color(0xFF007DD1),
                     fontSize: 20,
