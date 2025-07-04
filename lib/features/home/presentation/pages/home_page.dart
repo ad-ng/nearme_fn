@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nearme_fn/features/home/presentation/components/home_article.dart';
+import 'package:nearme_fn/features/home/presentation/components/article_card.dart';
 import 'package:nearme_fn/features/home/presentation/components/home_cat.dart';
 import 'package:nearme_fn/features/home/presentation/components/popular_card.dart';
 import 'package:nearme_fn/features/home/presentation/components/recommended_card.dart';
@@ -296,15 +296,13 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 227,
+              height: 400,
               child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 3,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => const HomeArticle(),
+                itemBuilder: (context, index) => const ArticleCard(),
               ),
             ),
-            const SizedBox(height: 10),
           ],
         ),
       ),
