@@ -5,17 +5,30 @@ import 'package:go_router/go_router.dart';
 ///
 class HomeCat extends StatelessWidget {
   ///
+  HomeCat({
+    required this.homeCatTitle,
+    required this.homeCatIcon,
+    required this.isDocument,
+    super.key,
+  });
+
+  ///
   final String homeCatTitle;
 
   ///
   final String homeCatIcon;
 
-  HomeCat({super.key, required this.homeCatTitle, required this.homeCatIcon});
+  ///
+  final bool isDocument;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed('subCategoryPage', extra: homeCatTitle),
+      onTap:
+          () =>
+              isDocument
+                  ? context.pushNamed('articlesList', extra: homeCatTitle)
+                  : context.pushNamed('subCategoryPage', extra: homeCatTitle),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.175,
         child: Column(

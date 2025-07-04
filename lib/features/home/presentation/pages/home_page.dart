@@ -91,22 +91,27 @@ class _HomePageState extends State<HomePage> {
                 HomeCat(
                   homeCatTitle: 'Travel Info',
                   homeCatIcon: '././lib/images/Frame 427319335.svg',
+                  isDocument: true,
                 ),
                 HomeCat(
                   homeCatTitle: 'Transport Service',
                   homeCatIcon: '././lib/images/Frame 427319336.svg',
+                  isDocument: false,
                 ),
                 HomeCat(
                   homeCatTitle: 'Accomodation & booking',
                   homeCatIcon: '././lib/images/building-office-2.svg',
+                  isDocument: false,
                 ),
                 HomeCat(
                   homeCatTitle: 'Activities & Things To Do',
                   homeCatIcon: '././lib/images/Frame 427319338.svg',
+                  isDocument: true,
                 ),
                 HomeCat(
                   homeCatTitle: 'Food & Dinning',
                   homeCatIcon: '././lib/images/Frame 427319339.svg',
+                  isDocument: false,
                 ),
               ],
             ),
@@ -118,22 +123,27 @@ class _HomePageState extends State<HomePage> {
                 HomeCat(
                   homeCatTitle: 'Shopping',
                   homeCatIcon: '././lib/images/shopping-bag.svg',
+                  isDocument: false,
                 ),
                 HomeCat(
                   homeCatTitle: 'Health & Wellness',
                   homeCatIcon: '././lib/images/Frame 427319341.svg',
+                  isDocument: false,
                 ),
                 HomeCat(
                   homeCatTitle: 'Government Services',
                   homeCatIcon: '././lib/images/briefcase.svg',
+                  isDocument: true,
                 ),
                 HomeCat(
                   homeCatTitle: 'Local \nCulture',
                   homeCatIcon: '././lib/images/Frame 427319343.svg',
+                  isDocument: true,
                 ),
                 HomeCat(
                   homeCatTitle: 'More',
                   homeCatIcon: '././lib/images/Layer 2.svg',
+                  isDocument: true,
                 ),
               ],
             ),
