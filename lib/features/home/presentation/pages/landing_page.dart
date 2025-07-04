@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
+import 'package:nearme_fn/features/profile/presentation/pages/profile_page.dart';
 
 ///landing page for all pages
 class LandingPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _LandingPageState extends State<LandingPage> {
     const Center(child: Text('E X P L O R E')),
     const Center(child: Text('M A P')),
     const Center(child: Text('S A V E D')),
-    const Center(child: Text('P R O F I L E')),
+    const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
