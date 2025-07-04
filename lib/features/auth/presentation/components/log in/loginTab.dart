@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/components/error_message.dart';
-import 'package:nearme_fn/features/auth/domain/usecases/sign_in_with_google.dart';
 import 'package:nearme_fn/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:nearme_fn/components/loading_State.dart';
 import 'package:nearme_fn/components/mybutton.dart';
@@ -29,7 +28,7 @@ class _LoginTabState extends State<LoginTab> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          context.goNamed('homePage');
+          context.goNamed('landingPage');
         }
         if (state is AuthError) {
           ErrorMessage(context, state.error);
@@ -179,9 +178,7 @@ class _LoginTabState extends State<LoginTab> {
                       ),
                     ),
                     child: IconButton(
-                      onPressed: () {
-                        context.goNamed('prof1');
-                      },
+                      onPressed: () {},
                       icon: SvgPicture.asset('././lib/images/google.svg'),
                     ),
                   ),
@@ -200,7 +197,7 @@ class _LoginTabState extends State<LoginTab> {
                       ),
                     ),
                     child: IconButton(
-                      onPressed: signInWithGoogle,
+                      onPressed: () {},
                       icon: SvgPicture.asset('././lib/images/apple-logo.svg'),
                     ),
                   ),

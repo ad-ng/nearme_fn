@@ -16,7 +16,12 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
-import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/actual_business_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/articles_list.dart';
+import 'package:nearme_fn/features/home/presentation/pages/articles_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
 void main() async {
@@ -85,9 +90,9 @@ final GoRouter routes = GoRouter(
       builder: (context, state) => const OnBoardingScreens(),
     ),
     GoRoute(
-      name: 'homePage',
-      path: '/homePage',
-      builder: (context, state) => const HomePage(),
+      name: 'landingPage',
+      path: '/landingPage',
+      builder: (context, state) => const LandingPage(),
     ),
     GoRoute(
       name: 'prof1',
@@ -118,6 +123,46 @@ final GoRouter routes = GoRouter(
       name: 'prof6',
       path: '/prof6',
       builder: (context, state) => const Prof6(),
+    ),
+    GoRoute(
+      name: 'subCategoryPage',
+      path: '/subCategoryPage',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return SubCategoryPage(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'businessPage',
+      path: '/businessPage',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return BusinessPage(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'actualBusinessPage',
+      path: '/actualBusinessPage',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return ActualBusinessPage(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'articlesPage',
+      path: '/articlesPage',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return ArticlesPage(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'articlesList',
+      path: '/articlesList',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return ArticlesList(title: title);
+      },
     ),
   ],
 );

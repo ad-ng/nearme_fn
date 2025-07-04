@@ -128,7 +128,7 @@ class _Prof6State extends State<Prof6> {
             MyButton(
               nameOfAction: 'Complete Profile',
               actionToPerform: () {
-                context.goNamed('homePage');
+                context.goNamed('landingPage');
               },
             ),
           ],
