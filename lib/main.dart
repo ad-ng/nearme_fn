@@ -16,6 +16,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
+import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
@@ -126,6 +127,14 @@ final GoRouter routes = GoRouter(
       builder: (context, state) {
         final title = (state.extra as String?) ?? 'Default Title';
         return SubCategoryPage(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'businessPage',
+      path: '/businessPage',
+      builder: (context, state) {
+        final title = (state.extra as String?) ?? 'Default Title';
+        return BusinessPage(title: title);
       },
     ),
   ],
