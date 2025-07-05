@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/explore/presentation/pages/explore_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
 import 'package:nearme_fn/features/profile/presentation/pages/profile_page.dart';
+import 'package:nearme_fn/features/saved/presentation/pages/saved_page.dart';
 
 ///landing page for all pages
 class LandingPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _LandingPageState extends State<LandingPage> {
     const HomePage(),
     const ExplorePage(),
     const Center(child: Text('M A P')),
-    const Center(child: Text('S A V E D')),
+    const SavedPage(),
     const ProfilePage(),
   ];
   @override
