@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/home/presentation/components/article_card.dart';
 import 'package:nearme_fn/features/home/presentation/components/home_cat.dart';
 import 'package:nearme_fn/features/home/presentation/components/popular_card.dart';
@@ -71,12 +72,15 @@ class _HomePageState extends State<HomePage> {
                       height: 30,
                     ),
                     const SizedBox(width: 10),
-                    Badge(
-                      label: const Text('2'),
-                      child: SvgPicture.asset(
-                        '././lib/images/bell.svg',
-                        width: 30,
-                        height: 30,
+                    GestureDetector(
+                      onTap: () => context.pushNamed('notificationsPage'),
+                      child: Badge(
+                        label: const Text('2'),
+                        child: SvgPicture.asset(
+                          '././lib/images/bell.svg',
+                          width: 30,
+                          height: 30,
+                        ),
                       ),
                     ),
                   ],

@@ -22,6 +22,7 @@ import 'package:nearme_fn/features/home/presentation/pages/articles_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
+import 'package:nearme_fn/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
 void main() async {
@@ -162,6 +163,13 @@ final GoRouter routes = GoRouter(
       builder: (context, state) {
         final title = (state.extra as String?) ?? 'Default Title';
         return ArticlesList(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'notificationsPage',
+      path: '/notificationsPage',
+      builder: (context, state) {
+        return const NotificationsPage();
       },
     ),
   ],
