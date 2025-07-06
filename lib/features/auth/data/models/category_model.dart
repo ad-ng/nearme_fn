@@ -5,16 +5,18 @@ import 'dart:convert';
 class CategoryModel {
   int? id;
   String name;
-  CategoryModel({required this.name, this.id});
+  bool isDoc;
+  CategoryModel({this.id, required this.name, required this.isDoc});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name};
+    return <String, dynamic>{'id': id, 'name': name, 'isDoc': isDoc};
   }
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
       id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
+      isDoc: map['isDoc'] as bool,
     );
   }
 

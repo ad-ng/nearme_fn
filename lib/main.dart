@@ -17,11 +17,13 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
 import 'package:nearme_fn/features/home/presentation/pages/actual_business_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/all_categories_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_list.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
+import 'package:nearme_fn/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
 void main() async {
@@ -162,6 +164,20 @@ final GoRouter routes = GoRouter(
       builder: (context, state) {
         final title = (state.extra as String?) ?? 'Default Title';
         return ArticlesList(title: title);
+      },
+    ),
+    GoRoute(
+      name: 'notificationsPage',
+      path: '/notificationsPage',
+      builder: (context, state) {
+        return const NotificationsPage();
+      },
+    ),
+    GoRoute(
+      name: 'allCategoriesPage',
+      path: '/allCategoriesPage',
+      builder: (context, state) {
+        return const AllCategoriesPage();
       },
     ),
   ],

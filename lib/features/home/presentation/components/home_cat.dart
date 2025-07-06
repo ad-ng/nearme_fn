@@ -26,7 +26,9 @@ class HomeCat extends StatelessWidget {
     return GestureDetector(
       onTap:
           () =>
-              isDocument
+              homeCatTitle == 'More'
+                  ? context.pushNamed('allCategoriesPage')
+                  : isDocument
                   ? context.pushNamed('articlesList', extra: homeCatTitle)
                   : context.pushNamed('subCategoryPage', extra: homeCatTitle),
       child: SizedBox(
