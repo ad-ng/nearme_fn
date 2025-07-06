@@ -17,6 +17,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
 import 'package:nearme_fn/features/home/presentation/pages/actual_business_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/all_categories_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_list.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
@@ -170,6 +171,13 @@ final GoRouter routes = GoRouter(
       path: '/notificationsPage',
       builder: (context, state) {
         return const NotificationsPage();
+      },
+    ),
+    GoRoute(
+      name: 'allCategoriesPage',
+      path: '/allCategoriesPage',
+      builder: (context, state) {
+        return const AllCategoriesPage();
       },
     ),
   ],

@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                   isDocument: true,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Local \nCulture',
+                  homeCatTitle: 'Local  Culture',
                   homeCatIcon: '././lib/images/Frame 427319343.svg',
                   isDocument: true,
                 ),
