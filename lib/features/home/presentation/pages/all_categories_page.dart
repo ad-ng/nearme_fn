@@ -76,7 +76,9 @@ class _AllCategoriesPageState extends State<AllCategoriesPage> {
                             margin: const EdgeInsets.only(bottom: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Color(0xFF959595)),
+                              border: Border.all(
+                                color: const Color(0xFF959595),
+                              ),
                             ),
                             child: ListTile(
                               onTap:
