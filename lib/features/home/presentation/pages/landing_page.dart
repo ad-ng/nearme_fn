@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/explore/presentation/pages/explore_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/home_page.dart';
+import 'package:nearme_fn/features/map/domain/usecases/location_service.dart';
+import 'package:nearme_fn/features/map/presentation/pages/map_page.dart';
 import 'package:nearme_fn/features/profile/presentation/pages/profile_page.dart';
 import 'package:nearme_fn/features/saved/presentation/pages/saved_page.dart';
 
@@ -18,10 +20,17 @@ class _LandingPageState extends State<LandingPage> {
   List<Widget> pages = [
     const HomePage(),
     const ExplorePage(),
-    const Center(child: Text('M A P')),
+    const MapPage(),
     const SavedPage(),
     const ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    LocationService.requestPermission();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
