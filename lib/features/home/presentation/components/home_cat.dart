@@ -40,7 +40,7 @@ class HomeCat extends StatelessWidget {
               width: 54,
               height: 54,
               decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xFF737373), width: 0.1),
+                border: Border.all(color: const Color(0xFF737373)),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SvgPicture.asset(homeCatIcon),

@@ -27,7 +27,7 @@ class LocationService {
     if (!hasPermission) return null;
 
     return Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
+      // desiredAccuracy: LocationAccuracy.high,
     );
   }
 }
