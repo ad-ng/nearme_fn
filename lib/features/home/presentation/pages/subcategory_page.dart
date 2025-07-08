@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/home/data/datasources/remote/home_api_service.dart';
+import 'package:nearme_fn/features/home/presentation/components/subcategory_card.dart';
 
 ///
 class SubCategoryPage extends StatefulWidget {
   ///
   const SubCategoryPage({required this.title, super.key});
+
+  ///
   final String title;
 
   @override
@@ -50,79 +53,34 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
               ),
             ),
             const SizedBox(height: 20),
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: 3,
+            //     itemBuilder:
+            //         (context, index) => SubcategoryCard(title: widget.title),
+            //   ),
+            // ),
             Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder:
-                    (context, index) => GestureDetector(
-                      onTap:
-                          () => context.pushNamed(
-                            'businessPage',
-                            extra: widget.title,
+              child: FutureBuilder(
+                future: HomeApiService().fetchSubCategory(widget.title),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    if (snapshot.data!.isEmpty) {
+                      return Image.asset('././lib/images/empty.png');
+                    }
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder:
+                          (context, index) => SubcategoryCard(
+                            title: widget.title,
+                            cardName: snapshot.data![index].name,
+                            businessesCount:
+                                snapshot.data![index].placeItemsCount,
                           ),
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 15),
-                        padding: const EdgeInsets.all(2),
-                        height: 87,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xFFAFAFAF)),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 74,
-                              height: 81,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.network(
-                                  'https://d31nhj1t453igc.cloudfront.net/cloudinary/2022/Apr/10/kdbjRlJE3XmrII57m0ZS.jpg',
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Public Transport',
-                                  style: TextStyle(
-                                    color: const Color(0xFF007DD1),
-                                    fontSize: 16,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 5,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFF9F9F9),
-                                    border: Border.all(
-                                      color: const Color(0xFFAFAFAF),
-                                    ),
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: const Text(
-                                    '20 Businesses',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 10,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             ),
           ],

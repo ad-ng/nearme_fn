@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-///
 class SubcategoryModel {
-  ///
-  int? id;
-
-  ///
-  String name;
-
-  ///
-  int categoryId;
-  SubcategoryModel({required this.name, required this.categoryId, this.id});
+  final int? id;
+  final String name;
+  final int categoryId;
+  final int placeItemsCount;
+  SubcategoryModel({
+    required this.name,
+    required this.categoryId,
+    required this.placeItemsCount,
+    this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{'id': id, 'name': name, 'categoryId': categoryId};
@@ -22,6 +22,7 @@ class SubcategoryModel {
       id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
       categoryId: map['categoryId'] as int,
+      placeItemsCount: map['_count']['placeItems'] as int,
     );
   }
 
