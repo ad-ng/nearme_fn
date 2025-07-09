@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                   isDocument: false,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Accomodation & booking',
+                  homeCatTitle: 'Accommodation & Booking',
                   homeCatIcon: '././lib/images/building-office-2.svg',
                   isDocument: false,
                 ),
