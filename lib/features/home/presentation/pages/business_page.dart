@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nearme_fn/features/home/data/datasources/remote/home_api_service.dart';
 import 'package:nearme_fn/features/home/presentation/components/business_card.dart';
 
 ///
@@ -37,9 +38,9 @@ class BusinessPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Private Taxi',
-              style: TextStyle(
+            Text(
+              title,
+              style: const TextStyle(
                 color: Color(0xFF007DD1),
                 fontSize: 20,
                 fontFamily: 'Poppins',
@@ -68,9 +69,23 @@ class BusinessPage extends StatelessWidget {
             ),
             const SizedBox(height: 31),
             Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) =>const BusinessCard(),
+              child: FutureBuilder(
+                future: HomeApiService().fetchSubCategoryItems(title),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(child: Text(snapshot.error.toString()));
+                  }
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder:
+                          (context, index) => BusinessCard(
+                            placeItemModel: snapshot.data![index],
+                          ),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             ),
           ],

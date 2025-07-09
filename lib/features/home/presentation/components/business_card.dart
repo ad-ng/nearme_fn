@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 
 ///
 class BusinessCard extends StatelessWidget {
   ///
-  const BusinessCard({super.key});
+  const BusinessCard({required this.placeItemModel, super.key});
+
+  ///
+  final PlaceItemModel placeItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +24,17 @@ class BusinessCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 14),
+              Padding(
+                padding: const EdgeInsets.only(left: 14),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.access_time_outlined, color: Colors.black),
-                    SizedBox(width: 10),
+                    const Icon(Icons.access_time_outlined, color: Colors.black),
+                    const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Working Hours',
                           style: TextStyle(
                             color: Colors.black,
@@ -40,8 +44,8 @@ class BusinessCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '24 Hours ',
-                          style: TextStyle(
+                          placeItemModel.workingHours,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                             fontFamily: 'Poppins',
@@ -71,7 +75,7 @@ class BusinessCard extends StatelessWidget {
           ),
           const SizedBox(height: 19),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -84,18 +88,18 @@ class BusinessCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.network(
-                          'https://education.ec.europa.eu/sites/default/files/2023-10/iStock-1356465076.jpg',
+                          placeItemModel.placeImg[0],
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                     const SizedBox(width: 14),
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Safe Ride Kigali',
-                          style: TextStyle(
+                          placeItemModel.title,
+                          style: const TextStyle(
                             color: Color(0xFF007DD1),
                             fontSize: 14,
                             fontFamily: 'Poppins',
@@ -105,8 +109,9 @@ class BusinessCard extends StatelessWidget {
                         SizedBox(
                           width: 143,
                           child: Text(
-                            'With the experience of more than 5 years in Private taxi, we are...',
-                            style: TextStyle(
+                            placeItemModel.description,
+                            maxLines: 4,
+                            style: const TextStyle(
                               color: Color(0xFF6C7278),
                               fontSize: 10,
                               fontFamily: 'Inter',
@@ -123,7 +128,7 @@ class BusinessCard extends StatelessWidget {
                   onTap:
                       () => context.pushNamed(
                         'actualBusinessPage',
-                        extra: 'title',
+                        extra: placeItemModel,
                       ),
                   child: Container(
                     width: 85,

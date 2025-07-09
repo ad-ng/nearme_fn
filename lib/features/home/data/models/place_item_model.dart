@@ -10,7 +10,7 @@ class PlaceItemModel {
   List<String> placeImg;
   String businessEmail;
   String phoneNumber;
-  int subCategory;
+  int subCategoryId;
   PlaceItemModel({
     required this.id,
     required this.title,
@@ -20,7 +20,7 @@ class PlaceItemModel {
     required this.placeImg,
     required this.businessEmail,
     required this.phoneNumber,
-    required this.subCategory,
+    required this.subCategoryId,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,10 +30,10 @@ class PlaceItemModel {
       'description': description,
       'workingHours': workingHours,
       'location': location,
-      'placeImg': placeImg,
+      //   'placeImg': placeImg,
       'businessEmail': businessEmail,
       'phoneNumber': phoneNumber,
-      'subCategory': subCategory,
+      'subCategoryId': subCategoryId,
     };
   }
 
@@ -44,10 +44,10 @@ class PlaceItemModel {
       description: map['description'] as String,
       workingHours: map['workingHours'] as String,
       location: map['location'] as String,
-      placeImg: List<String>.from(map['placeImg'] as List<String>),
+      placeImg: List<String>.from(map['placeImg'] as List<dynamic>),
       businessEmail: map['businessEmail'] as String,
       phoneNumber: map['phoneNumber'] as String,
-      subCategory: map['subCategory'] as int,
+      subCategoryId: map['subCategoryId'] as int,
     );
   }
 

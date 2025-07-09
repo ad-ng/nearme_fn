@@ -72,7 +72,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                       itemCount: snapshot.data!.length,
                       itemBuilder:
                           (context, index) => SubcategoryCard(
-                            title: widget.title,
+                            title: snapshot.data![index].name,
                             cardName: snapshot.data![index].name,
                             businessesCount:
                                 snapshot.data![index].placeItemsCount,

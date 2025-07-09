@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 
 ///
 class ActualBusinessPage extends StatefulWidget {
   ///
-  const ActualBusinessPage({required this.title, super.key});
+  const ActualBusinessPage({required this.placeItemModel, super.key});
 
   ///
-  final String title;
+  final PlaceItemModel placeItemModel;
 
   @override
   State<ActualBusinessPage> createState() => _ActualBusinessPageState();
@@ -33,7 +34,7 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),
                           child: Image.network(
-                            'https://www.ktpress.rw/wp-content/uploads/2019/07/VW.jpg',
+                            widget.placeItemModel.placeImg[0],
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -88,12 +89,12 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Column(
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Volkswagen Move',
-                                    style: TextStyle(
+                                    widget.placeItemModel.title,
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 24,
                                       fontFamily: 'Poppins',
@@ -104,14 +105,14 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.location_on_rounded,
                                         color: Colors.white,
                                         size: 15,
                                       ),
                                       Text(
-                                        'Malang, East Java',
-                                        style: TextStyle(
+                                        widget.placeItemModel.location,
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 14,
                                           fontFamily: 'Poppins',
@@ -168,9 +169,9 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'Mount Semeru or Mount Meru is a cone volcano in East Java, Indonesia. Mount Semeru is the highest mountain on the island of Java, with its peak Mahameru, 3,676 meters above sea level.',
-                    style: TextStyle(
+                  Text(
+                    widget.placeItemModel.description,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 10,
                       fontFamily: 'Poppins',
@@ -253,9 +254,9 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                           height: 1.43,
                                         ),
                                       ),
-                                      const Text(
-                                        'Volkswagen Move',
-                                        style: TextStyle(
+                                      Text(
+                                        widget.placeItemModel.title,
+                                        style: const TextStyle(
                                           color: Color(0xFF007DD1),
                                           fontSize: 14,
                                           fontFamily: 'Inter',
@@ -283,9 +284,9 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                           height: 1.43,
                                         ),
                                       ),
-                                      const Text(
-                                        'movecabs@Volkswagen.com',
-                                        style: TextStyle(
+                                      Text(
+                                        widget.placeItemModel.businessEmail,
+                                        style: const TextStyle(
                                           color: Color(0xFF007DD1),
                                           fontSize: 14,
                                           fontFamily: 'Inter',
@@ -313,9 +314,9 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                           height: 1.43,
                                         ),
                                       ),
-                                      const Text(
-                                        '+250 784 850 171',
-                                        style: TextStyle(
+                                      Text(
+                                        widget.placeItemModel.phoneNumber,
+                                        style: const TextStyle(
                                           color: Color(0xFF007DD1),
                                           fontSize: 14,
                                           fontFamily: 'Inter',
@@ -343,9 +344,9 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                           height: 1.43,
                                         ),
                                       ),
-                                      const Text(
-                                        '8:00 AM - 9:00 PM',
-                                        style: TextStyle(
+                                      Text(
+                                        widget.placeItemModel.workingHours,
+                                        style: const TextStyle(
                                           color: Color(0xFF007DD1),
                                           fontSize: 14,
                                           fontFamily: 'Inter',
