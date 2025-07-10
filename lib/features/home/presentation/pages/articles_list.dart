@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nearme_fn/features/home/data/datasources/remote/home_api_service.dart';
 import 'package:nearme_fn/features/home/presentation/components/article_card.dart';
 
 ///
@@ -73,9 +74,19 @@ class _ArticlesListState extends State<ArticlesList> {
             ),
             const SizedBox(height: 31),
             Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) => const ArticleCard(),
+              child: FutureBuilder(
+                future: HomeApiService().fetchDocItems(widget.title),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder:
+                          (context, index) =>
+                              ArticleCard(docItemModel: snapshot.data![index]),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             ),
           ],

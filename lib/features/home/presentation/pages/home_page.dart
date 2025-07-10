@@ -309,14 +309,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              height: 400,
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 3,
-                itemBuilder: (context, index) => const ArticleCard(),
-              ),
-            ),
+            // SizedBox(
+            //   height: 400,
+            //   child: ListView.builder(
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     itemCount: 3,
+            //     itemBuilder: (context, index) => const ArticleCard(),
+            //   ),
+            // ),
           ],
         ),
       ),
