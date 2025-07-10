@@ -76,6 +76,9 @@ class BusinessPage extends StatelessWidget {
                     return Center(child: Text(snapshot.error.toString()));
                   }
                   if (snapshot.hasData) {
+                    if (snapshot.data!.isEmpty) {
+                      return Image.asset('././lib/images/empty.png');
+                    }
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder:

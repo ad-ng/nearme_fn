@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                   isDocument: true,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Transport Service',
+                  homeCatTitle: 'Transport Services',
                   homeCatIcon: '././lib/images/Frame 427319336.svg',
                   isDocument: false,
                 ),

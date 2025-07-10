@@ -8,6 +8,7 @@ class SubcategoryCard extends StatelessWidget {
     required this.title,
     required this.cardName,
     required this.businessesCount,
+    required this.featuredImage,
     super.key,
   });
 
@@ -19,6 +20,9 @@ class SubcategoryCard extends StatelessWidget {
 
   ///
   final int businessesCount;
+
+  ///
+  final String featuredImage;
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +43,7 @@ class SubcategoryCard extends StatelessWidget {
               height: 81,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  'https://d31nhj1t453igc.cloudfront.net/cloudinary/2022/Apr/10/kdbjRlJE3XmrII57m0ZS.jpg',
-                  fit: BoxFit.fill,
-                ),
+                child: Image.network(featuredImage, fit: BoxFit.fill),
               ),
             ),
             const SizedBox(width: 10),

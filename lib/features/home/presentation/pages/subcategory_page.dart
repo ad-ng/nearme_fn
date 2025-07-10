@@ -74,6 +74,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                           (context, index) => SubcategoryCard(
                             title: snapshot.data![index].name,
                             cardName: snapshot.data![index].name,
+                            featuredImage: snapshot.data![index].featuredImage,
                             businessesCount:
                                 snapshot.data![index].placeItemsCount,
                           ),
