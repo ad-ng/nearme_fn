@@ -78,6 +78,9 @@ class _ArticlesListState extends State<ArticlesList> {
                 future: HomeApiService().fetchDocItems(widget.title),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
+                    if (snapshot.data!.isEmpty) {
+                      return Image.asset('././lib/images/empty.png');
+                    }
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder:
