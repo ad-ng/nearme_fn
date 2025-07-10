@@ -92,13 +92,18 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    widget.placeItemModel.title,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w600,
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width *
+                                        0.65,
+                                    child: Text(
+                                      widget.placeItemModel.title,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
                                   Row(
