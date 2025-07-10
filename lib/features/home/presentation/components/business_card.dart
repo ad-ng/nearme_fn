@@ -75,7 +75,7 @@ class BusinessCard extends StatelessWidget {
           ),
           const SizedBox(height: 19),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -97,13 +97,18 @@ class BusinessCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          placeItemModel.title,
-                          style: const TextStyle(
-                            color: Color(0xFF007DD1),
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.43,
+                          height: 20,
+                          child: Text(
+                            placeItemModel.title,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Color(0xFF007DD1),
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                         SizedBox(

@@ -43,7 +43,10 @@ class SubcategoryCard extends StatelessWidget {
               height: 81,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(featuredImage, fit: BoxFit.fill),
+                child: Image.network(
+                  featuredImage,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             const SizedBox(width: 10),
