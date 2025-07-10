@@ -85,11 +85,14 @@ class BusinessCard extends StatelessWidget {
                     SizedBox(
                       width: 69,
                       height: 69,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          placeItemModel.placeImg[0],
-                          fit: BoxFit.cover,
+                      child: Hero(
+                        tag: placeItemModel.id,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            placeItemModel.placeImg[0],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

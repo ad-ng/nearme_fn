@@ -197,9 +197,12 @@ class ArticlesPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 SizedBox(
                   height: 257,
-                  child: Image.network(
-                    docItemModel.featuredImg,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: docItemModel.id,
+                    child: Image.network(
+                      docItemModel.featuredImg,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 19),

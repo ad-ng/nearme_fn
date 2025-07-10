@@ -31,11 +31,14 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                     children: [
                       SizedBox(
                         height: 501,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: Image.network(
-                            widget.placeItemModel.placeImg[0],
-                            fit: BoxFit.cover,
+                        child: Hero(
+                          tag: widget.placeItemModel.id,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Image.network(
+                              widget.placeItemModel.placeImg[0],
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
