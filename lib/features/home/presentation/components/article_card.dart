@@ -13,7 +13,7 @@ class ArticleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed('articlesPage'),
+      onTap: () => context.pushNamed('articlesPage', extra: docItemModel),
       child: Container(
         height: 117,
         margin: const EdgeInsets.only(bottom: 20),

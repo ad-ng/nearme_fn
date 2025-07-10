@@ -16,6 +16,7 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
+import 'package:nearme_fn/features/home/data/models/doc_item_model.dart';
 import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 import 'package:nearme_fn/features/home/presentation/pages/actual_business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/all_categories_page.dart';
@@ -158,8 +159,8 @@ final GoRouter routes = GoRouter(
       name: 'articlesPage',
       path: '/articlesPage',
       builder: (context, state) {
-        final title = (state.extra as String?) ?? 'Default Title';
-        return ArticlesPage(title: title);
+        final docItemModel = state.extra! as DocItemModel;
+        return ArticlesPage(docItemModel: docItemModel);
       },
     ),
     GoRoute(

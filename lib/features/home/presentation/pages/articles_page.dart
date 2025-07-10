@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/home/data/models/doc_item_model.dart';
 
 ///
 class ArticlesPage extends StatelessWidget {
   ///
-  const ArticlesPage({required this.title, super.key});
+  const ArticlesPage({required this.docItemModel, super.key});
 
   ///
-  final String title;
+  final DocItemModel docItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +41,9 @@ class ArticlesPage extends StatelessWidget {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Text(
-                    'How to renew your Resident permit in Rwanda',
-                    style: TextStyle(
+                  child: Text(
+                    docItemModel.title,
+                    style: const TextStyle(
                       color: Color(0xFF007DD1),
                       fontSize: 20,
                       fontFamily: 'Poppins',
@@ -52,17 +53,17 @@ class ArticlesPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5),
-                const Row(
+                Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_on_rounded,
                       size: 15,
                       color: Color(0xFF007DD1),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(
-                      'Kigali, Rwanda',
-                      style: TextStyle(
+                      docItemModel.location,
+                      style: const TextStyle(
                         color: Color(0xFF007DD1),
                         fontSize: 14,
                         fontFamily: 'Poppins',
@@ -89,9 +90,9 @@ class ArticlesPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 7),
-                        const Text(
-                          'Adolph',
-                          style: TextStyle(
+                        Text(
+                          '${docItemModel.author.firstName} ${docItemModel.author.lastName}',
+                          style: const TextStyle(
                             color: Color(0xFF191919),
                             fontSize: 10,
                             fontFamily: 'Poppins',
@@ -99,9 +100,9 @@ class ArticlesPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        const Text(
-                          '13 Dec 2025',
-                          style: TextStyle(
+                        Text(
+                          docItemModel.createdAt.substring(0, 10),
+                          style: const TextStyle(
                             color: Color(0xFF959595),
                             fontSize: 10,
                             fontFamily: 'Poppins',
@@ -145,11 +146,11 @@ class ArticlesPage extends StatelessWidget {
                 const SizedBox(height: 30),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Text.rich(
+                  child: Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(
-                          text: 'East Java, Indonesia -',
+                        const TextSpan(
+                          text: 'Summary -',
                           style: TextStyle(
                             color: Color(0xFF191919),
                             fontSize: 12,
@@ -158,9 +159,8 @@ class ArticlesPage extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text:
-                              ' The landscape of East Java Province is dotted with several towering mountains. Some of the mountains in East Java are also known to have captivating views and challenging hiking trails for climbers. Climbers usually visit these mountains during each climbing season to enjoy the panoramic view of East Java from the highest peak',
-                          style: TextStyle(
+                          text: docItemModel.summary,
+                          style: const TextStyle(
                             color: Color(0xFF191919),
                             fontSize: 12,
                             fontFamily: 'Poppins',
@@ -198,16 +198,16 @@ class ArticlesPage extends StatelessWidget {
                 SizedBox(
                   height: 257,
                   child: Image.network(
-                    'https://ik.imgkit.net/3vlqs5axxjf/TP/ik-seo/images/99999999-9999-9999-9999-999999999999/ef43fbc2-e20c-484b-8be7-05dae47f9915/source/The-gardens-and-pool-at-the-Governor%27s-Residence.png?tr=w-684%2Cfo-auto',
+                    docItemModel.featuredImg,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(height: 19),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const Text(
-                    'Mount Semeru is the highest mountain in East Java with an altitude of 3,676 meters above sea level, making it also the highest mountain on the island of Java. The peak of Mount Semeru is named Mahameru and the crater is named Jonggring Saloko. The location of Mount Semeru is included in the Malang, Lumajang, Probolinggo, and Pasuruan regions, precisely within the Bromo Tengger Semeru National Park (KTN BTS). \nMount Semeru is a strato-shaped active Quaternary volcano type, with a lava dome. The type of eruption of Mount Semeru is explosive followed by the occurrence of hot cloud flows that flow into the valleys and strombolian type eruptions which are usually followed by the formation of new lava domes and tongues. To reach the summit, there are several climbing routes of Mount Semeru such as via Pasar Tumpang and via Ranupani. While on the slopes of Mount Semeru there are also several tourist destinations such as Ranu Kumbolo, Oro-oro Ombo, Cemoro Kandang, Kalimati, and Arcopodo.',
-                    style: TextStyle(
+                  child: Text(
+                    docItemModel.description,
+                    style: const TextStyle(
                       color: Color(0xFF191919),
                       fontSize: 12,
                       fontFamily: 'Poppins',
