@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                   isDocument: true,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Local  Culture',
+                  homeCatTitle: 'Local Culture',
                   homeCatIcon: '././lib/images/Frame 427319343.svg',
                   isDocument: true,
                 ),
@@ -286,10 +286,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 20),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Articles',
                   style: TextStyle(
                     color: Color(0xFF007DD1),
@@ -298,13 +298,16 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Color(0xFF007DD1),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => context.pushNamed('seeAllArticlesPage'),
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color(0xFF007DD1),
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
@@ -318,7 +321,7 @@ class _HomePageState extends State<HomePage> {
                   if (snapshot.hasData) {
                     return ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: snapshot.data!.length,
+                      itemCount: 3,
                       itemBuilder:
                           (context, index) =>
                               ArticleCard(docItemModel: snapshot.data![index]),

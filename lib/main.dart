@@ -24,6 +24,7 @@ import 'package:nearme_fn/features/home/presentation/pages/articles_list.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/see_articles_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
 import 'package:nearme_fn/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
@@ -183,6 +184,13 @@ final GoRouter routes = GoRouter(
       path: '/allCategoriesPage',
       builder: (context, state) {
         return const AllCategoriesPage();
+      },
+    ),
+    GoRoute(
+      name: 'seeAllArticlesPage',
+      path: '/seeAllArticlesPage',
+      builder: (context, state) {
+        return const SeeAllArticlesPage();
       },
     ),
   ],
