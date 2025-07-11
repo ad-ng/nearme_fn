@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/home/data/datasources/remote/home_api_service.dart';
 import 'package:nearme_fn/features/home/presentation/components/article_card.dart';
 import 'package:nearme_fn/features/home/presentation/components/home_cat.dart';
 import 'package:nearme_fn/features/home/presentation/components/popular_card.dart';
@@ -309,14 +310,24 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             const SizedBox(height: 20),
-            // SizedBox(
-            //   height: 400,
-            //   child: ListView.builder(
-            //     physics: const NeverScrollableScrollPhysics(),
-            //     itemCount: 3,
-            //     itemBuilder: (context, index) => const ArticleCard(),
-            //   ),
-            // ),
+            SizedBox(
+              height: 400,
+              child: FutureBuilder(
+                future: HomeApiService().fetchAllArticles(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder:
+                          (context, index) =>
+                              ArticleCard(docItemModel: snapshot.data![index]),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
+              ),
+            ),
           ],
         ),
       ),

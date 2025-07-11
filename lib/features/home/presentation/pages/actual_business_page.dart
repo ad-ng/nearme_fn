@@ -131,34 +131,36 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                   ),
                                 ],
                               ),
-                              Stack(
-                                alignment: Alignment(0, 0),
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.white),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    width: 80,
-                                    height: 80,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        'https://www.ktpress.rw/wp-content/uploads/2019/07/VW.jpg',
-                                        fit: BoxFit.cover,
+                              GestureDetector(
+                                child: Stack(
+                                  alignment: Alignment(0, 0),
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.white),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      width: 80,
+                                      height: 80,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                          widget.placeItemModel.placeImg[0],
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const Text(
-                                    '5+',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w400,
+                                    Text(
+                                      '${widget.placeItemModel.placeImg.length} More',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -181,7 +183,6 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                     widget.placeItemModel.description,
                     style: const TextStyle(
                       color: Colors.black,
-                      fontSize: 10,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w300,
                     ),
