@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/home/data/models/doc_item_model.dart';
 
 ///
 class ArticleCard extends StatelessWidget {
   ///
-  const ArticleCard({super.key});
+  const ArticleCard({required this.docItemModel, super.key});
+
+  ///
+  final DocItemModel docItemModel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed('articlesPage'),
+      onTap: () => context.pushNamed('articlesPage', extra: docItemModel),
       child: Container(
         height: 117,
         margin: const EdgeInsets.only(bottom: 20),
@@ -26,11 +30,11 @@ class ArticleCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const SizedBox(
+                SizedBox(
                   width: 220,
                   child: Text(
-                    'How to renew your Resident permit in Rwanda',
-                    style: TextStyle(
+                    docItemModel.title,
+                    style: const TextStyle(
                       color: Color(0xFF007DD1),
                       fontSize: 16,
                       fontFamily: 'Inter',
@@ -52,19 +56,19 @@ class ArticleCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 7),
-                    const Text(
-                      'Adolph',
-                      style: TextStyle(
+                    Text(
+                      '${docItemModel.author.firstName!} ${docItemModel.author.lastName}',
+                      style: const TextStyle(
                         color: Color(0xFF191919),
                         fontSize: 10,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w300,
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    const Text(
-                      '13 Dec 2025',
-                      style: TextStyle(
+                    const SizedBox(width: 20),
+                    Text(
+                      docItemModel.createdAt.substring(0, 10),
+                      style: const TextStyle(
                         color: Color(0xFF959595),
                         fontSize: 10,
                         fontFamily: 'Poppins',
@@ -78,11 +82,14 @@ class ArticleCard extends StatelessWidget {
             SizedBox(
               width: 110,
               height: 85,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  'https://waybird.imgix.net/lodge_images/images/000/134/400/original/NXT_2999-1920w.webp?w=1420&h=946&crop=center%20center&fit=min&dpr=1&q=50&auto=format',
-                  fit: BoxFit.cover,
+              child: Hero(
+                tag: docItemModel.id,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    docItemModel.featuredImg,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

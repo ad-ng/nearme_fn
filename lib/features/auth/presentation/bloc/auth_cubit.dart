@@ -4,10 +4,12 @@ import 'package:nearme_fn/features/auth/domain/repository/auth_repos.dart';
 
 ///
 class AuthCubit extends Cubit<AuthState> {
+  ///
   AuthCubit(this._authRepos) : super(AuthInitial());
   final AuthRepos _authRepos;
 
-  Future login(String email, String password) async {
+  ///
+  Future<dynamic> login(String email, String password) async {
     emit(AuthLoading());
     try {
       final response = await _authRepos.login(email, password);
@@ -17,7 +19,8 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future registering(UserModel userModel) async {
+  ///
+  Future<dynamic> registering(UserModel userModel) async {
     emit(AuthLoading());
     try {
       final response = await _authRepos.registering(userModel);
@@ -39,18 +42,25 @@ class AuthLoading extends AuthState {}
 
 /// to run at success
 class LoginSuccess extends AuthState {
+  ///
   LoginSuccess(this.response);
+
+  ///
   final UserModel response;
 }
 
 /// to run at success
 class RegisterSuccess extends AuthState {
+  ///
   RegisterSuccess(this.response);
+
+  ///
   final UserModel response;
 }
 
 /// when errors occurred
 class AuthError extends AuthState {
+  ///
   AuthError(this.error);
 
   ///error from api

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/home/data/datasources/remote/home_api_service.dart';
 import 'package:nearme_fn/features/home/presentation/components/article_card.dart';
 import 'package:nearme_fn/features/home/presentation/components/home_cat.dart';
 import 'package:nearme_fn/features/home/presentation/components/popular_card.dart';
@@ -98,12 +99,12 @@ class _HomePageState extends State<HomePage> {
                   isDocument: true,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Transport Service',
+                  homeCatTitle: 'Transport Services',
                   homeCatIcon: '././lib/images/Frame 427319336.svg',
                   isDocument: false,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Accomodation & booking',
+                  homeCatTitle: 'Accommodation & Booking',
                   homeCatIcon: '././lib/images/building-office-2.svg',
                   isDocument: false,
                 ),
@@ -140,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                   isDocument: true,
                 ),
                 HomeCat(
-                  homeCatTitle: 'Local  Culture',
+                  homeCatTitle: 'Local Culture',
                   homeCatIcon: '././lib/images/Frame 427319343.svg',
                   isDocument: true,
                 ),
@@ -186,10 +187,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 30),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Recommended',
                   style: TextStyle(
                     color: Color(0xFF007DD1),
@@ -198,30 +199,47 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Color(0xFF007DD1),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => context.pushNamed('seeAllRecommendedPage'),
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color(0xFF007DD1),
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: 3,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => const RecommendedCard(),
+            FutureBuilder(
+              future: HomeApiService().fetchRecommendedPlaces(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 3,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder:
+                        (context, index) => RecommendedCard(
+                          placeItemModel: snapshot.data![index],
+                        ),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Text(snapshot.error.toString());
+                }
+                return const SizedBox.shrink();
+              },
             ),
             const SizedBox(height: 10),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 205,
                   child: Text(
                     'Choose the location you want',
@@ -233,13 +251,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Color(0xFF007DD1),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => context.pushNamed('seeAllPlacesPage'),
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color(0xFF007DD1),
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
@@ -285,10 +306,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 20),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Articles',
                   style: TextStyle(
                     color: Color(0xFF007DD1),
@@ -297,13 +318,16 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Color(0xFF007DD1),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => context.pushNamed('seeAllArticlesPage'),
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color(0xFF007DD1),
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
@@ -311,10 +335,20 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 20),
             SizedBox(
               height: 400,
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 3,
-                itemBuilder: (context, index) => const ArticleCard(),
+              child: FutureBuilder(
+                future: HomeApiService().fetchAllArticles(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 3,
+                      itemBuilder:
+                          (context, index) =>
+                              ArticleCard(docItemModel: snapshot.data![index]),
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             ),
           ],

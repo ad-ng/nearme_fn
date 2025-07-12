@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/home/data/datasources/remote/home_api_service.dart';
-import 'package:nearme_fn/features/home/presentation/components/business_card.dart';
+import 'package:nearme_fn/features/home/presentation/components/article_card.dart';
 
 ///
-class BusinessPage extends StatelessWidget {
+class SeeAllArticlesPage extends StatefulWidget {
   ///
-  const BusinessPage({required this.title, super.key});
+  const SeeAllArticlesPage({super.key});
 
-  ///
-  final String title;
+  @override
+  State<SeeAllArticlesPage> createState() => _SeeAllArticlesPageState();
+}
 
+class _SeeAllArticlesPageState extends State<SeeAllArticlesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(
@@ -23,30 +24,21 @@ class BusinessPage extends StatelessWidget {
             color: Color(0xFF007DD1),
           ),
         ),
-        centerTitle: false,
+        backgroundColor: Colors.white,
         title: const Text(
-          'Back',
+          'All Articles',
           style: TextStyle(
             color: Color(0xFF007DD1),
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
         ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Color(0xFF007DD1),
-                fontSize: 20,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w600,
-              ),
-            ),
             const SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(
@@ -67,24 +59,17 @@ class BusinessPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 31),
+            const SizedBox(height: 20),
             Expanded(
               child: FutureBuilder(
-                future: HomeApiService().fetchSubCategoryItems(title),
+                future: HomeApiService().fetchAllArticles(),
                 builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Center(child: Text(snapshot.error.toString()));
-                  }
                   if (snapshot.hasData) {
-                    if (snapshot.data!.isEmpty) {
-                      return Image.asset('././lib/images/empty.png');
-                    }
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder:
-                          (context, index) => BusinessCard(
-                            placeItemModel: snapshot.data![index],
-                          ),
+                          (context, index) =>
+                              ArticleCard(docItemModel: snapshot.data![index]),
                     );
                   }
                   return const SizedBox.shrink();

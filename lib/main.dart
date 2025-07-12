@@ -16,12 +16,17 @@ import 'package:nearme_fn/features/auth/presentation/pages/profile/prof3.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof4.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof5.dart';
 import 'package:nearme_fn/features/auth/presentation/pages/profile/prof6.dart';
+import 'package:nearme_fn/features/home/data/models/doc_item_model.dart';
+import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 import 'package:nearme_fn/features/home/presentation/pages/actual_business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/all_categories_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_list.dart';
 import 'package:nearme_fn/features/home/presentation/pages/articles_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/business_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/landing_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/see_articles_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/see_places_page.dart';
+import 'package:nearme_fn/features/home/presentation/pages/see_recommended_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
 import 'package:nearme_fn/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
@@ -36,7 +41,9 @@ void main() async {
   runApp(const MyApp());
 }
 
+///
 class MyApp extends StatelessWidget {
+  ///
   const MyApp({super.key});
 
   @override
@@ -57,6 +64,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+///
 final GoRouter routes = GoRouter(
   initialLocation: '/',
 
@@ -146,16 +154,16 @@ final GoRouter routes = GoRouter(
       name: 'actualBusinessPage',
       path: '/actualBusinessPage',
       builder: (context, state) {
-        final title = (state.extra as String?) ?? 'Default Title';
-        return ActualBusinessPage(title: title);
+        final placeItemModel = state.extra! as PlaceItemModel;
+        return ActualBusinessPage(placeItemModel: placeItemModel);
       },
     ),
     GoRoute(
       name: 'articlesPage',
       path: '/articlesPage',
       builder: (context, state) {
-        final title = (state.extra as String?) ?? 'Default Title';
-        return ArticlesPage(title: title);
+        final docItemModel = state.extra! as DocItemModel;
+        return ArticlesPage(docItemModel: docItemModel);
       },
     ),
     GoRoute(
@@ -178,6 +186,27 @@ final GoRouter routes = GoRouter(
       path: '/allCategoriesPage',
       builder: (context, state) {
         return const AllCategoriesPage();
+      },
+    ),
+    GoRoute(
+      name: 'seeAllArticlesPage',
+      path: '/seeAllArticlesPage',
+      builder: (context, state) {
+        return const SeeAllArticlesPage();
+      },
+    ),
+    GoRoute(
+      name: 'seeAllPlacesPage',
+      path: '/seeAllPlacesPage',
+      builder: (context, state) {
+        return const SeeAllPlacesPage();
+      },
+    ),
+    GoRoute(
+      name: 'seeAllRecommendedPage',
+      path: '/seeAllRecommendedPage',
+      builder: (context, state) {
+        return const SeeAllRecommendedPage();
       },
     ),
   ],
