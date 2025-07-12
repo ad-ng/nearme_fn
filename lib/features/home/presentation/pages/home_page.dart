@@ -218,11 +218,11 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) => const RecommendedCard(),
             ),
             const SizedBox(height: 10),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 205,
                   child: Text(
                     'Choose the location you want',
@@ -234,13 +234,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Color(0xFF007DD1),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => context.pushNamed('seeAllPlacesPage'),
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color(0xFF007DD1),
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
