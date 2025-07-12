@@ -187,10 +187,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 30),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Recommended',
                   style: TextStyle(
                     color: Color(0xFF007DD1),
@@ -199,13 +199,16 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Color(0xFF007DD1),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => context.pushNamed('seeAllRecommendedPage'),
+                  child: const Text(
+                    'See all',
+                    style: TextStyle(
+                      color: Color(0xFF007DD1),
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
