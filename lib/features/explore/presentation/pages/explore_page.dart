@@ -78,12 +78,12 @@ class _ExplorePageState extends State<ExplorePage> {
                       isDocument: true,
                     ),
                     HomeCat(
-                      homeCatTitle: 'Transport Service',
+                      homeCatTitle: 'Transport Services',
                       homeCatIcon: '././lib/images/Frame 427319336.svg',
                       isDocument: false,
                     ),
                     HomeCat(
-                      homeCatTitle: 'Accomodation & booking',
+                      homeCatTitle: 'Accommodation & Booking',
                       homeCatIcon: '././lib/images/building-office-2.svg',
                       isDocument: false,
                     ),
@@ -122,7 +122,7 @@ class _ExplorePageState extends State<ExplorePage> {
                       isDocument: false,
                     ),
                     HomeCat(
-                      homeCatTitle: 'Local \nCulture',
+                      homeCatTitle: 'Local Culture',
                       homeCatIcon: '././lib/images/Frame 427319343.svg',
                       isDocument: true,
                     ),
