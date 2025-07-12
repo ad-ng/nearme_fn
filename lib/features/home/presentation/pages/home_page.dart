@@ -211,11 +211,25 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             const SizedBox(height: 20),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: 3,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => const RecommendedCard(),
+            FutureBuilder(
+              future: HomeApiService().fetchRecommendedPlaces(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 3,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder:
+                        (context, index) => RecommendedCard(
+                          placeItemModel: snapshot.data![index],
+                        ),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Text(snapshot.error.toString());
+                }
+                return const SizedBox.shrink();
+              },
             ),
             const SizedBox(height: 10),
             Row(

@@ -103,4 +103,27 @@ class HomeApiService {
       throw Exception('Something went wrong: $e');
     }
   }
+
+  ///
+  Future<List<PlaceItemModel>> fetchRecommendedPlaces() async {
+    try {
+      final response = await _dio.get<Map<String, dynamic>>(
+        '/category/recommendation/all',
+      );
+
+      final dataJson = response.data?['data'];
+
+      if (dataJson != null && dataJson is List) {
+        return dataJson
+            .map((json) => PlaceItemModel.fromMap(json as Map<String, dynamic>))
+            .toList();
+      } else {
+        throw Exception('Expected a list but got ${dataJson.runtimeType}');
+      }
+    } on DioException catch (e) {
+      throw Exception('Something went wrong: $e');
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
 }

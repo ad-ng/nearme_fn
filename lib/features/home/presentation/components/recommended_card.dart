@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 
 ///
 class RecommendedCard extends StatelessWidget {
   ///
-  const RecommendedCard({super.key});
+  const RecommendedCard({required this.placeItemModel, super.key});
+
+  ///
+  final PlaceItemModel placeItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class RecommendedCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
                   child: Image.network(
-                    'https://www.newtimes.co.rw/uploads/imported_images/files/2020/nyandungu-cafe-resto-will-provide-snacks-and-refreshments-to-the-visitors.jpg',
+                    placeItemModel.placeImg[0],
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -42,9 +46,9 @@ class RecommendedCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Nyandungu Park',
-                      style: TextStyle(
+                    Text(
+                      placeItemModel.title,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                         fontFamily: 'Poppins',
@@ -70,17 +74,17 @@ class RecommendedCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Row(
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.location_on_rounded,
                           color: Color(0xFF007DD1),
                           size: 15,
                         ),
                         Text(
-                          'Malang, East Java',
-                          style: TextStyle(
+                          placeItemModel.location,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                             fontFamily: 'Poppins',
