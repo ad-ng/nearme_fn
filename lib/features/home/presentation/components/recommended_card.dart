@@ -73,9 +73,9 @@ class RecommendedCard extends StatelessWidget {
                           border: Border.all(color: const Color(0xFFAFAFAF)),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: const Text(
-                          'Travel',
-                          style: TextStyle(
+                        child: Text(
+                          placeItemModel.subCategory.name,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                             fontFamily: 'Poppins',

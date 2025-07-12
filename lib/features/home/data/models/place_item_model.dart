@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:nearme_fn/features/home/data/models/subcategory_model.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class PlaceItemModel {
@@ -11,6 +12,7 @@ class PlaceItemModel {
   String businessEmail;
   String phoneNumber;
   int subCategoryId;
+  SubcategoryModel subCategory;
   PlaceItemModel({
     required this.id,
     required this.title,
@@ -21,6 +23,7 @@ class PlaceItemModel {
     required this.businessEmail,
     required this.phoneNumber,
     required this.subCategoryId,
+    required this.subCategory,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,10 +33,11 @@ class PlaceItemModel {
       'description': description,
       'workingHours': workingHours,
       'location': location,
-      //   'placeImg': placeImg,
+      'placeImg': placeImg,
       'businessEmail': businessEmail,
       'phoneNumber': phoneNumber,
       'subCategoryId': subCategoryId,
+      'subCategory': subCategory.toMap(),
     };
   }
 
@@ -48,6 +52,9 @@ class PlaceItemModel {
       businessEmail: map['businessEmail'] as String,
       phoneNumber: map['phoneNumber'] as String,
       subCategoryId: map['subCategoryId'] as int,
+      subCategory: SubcategoryModel.fromMap(
+        map['subCategory'] as Map<String, dynamic>,
+      ),
     );
   }
 
