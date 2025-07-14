@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nearme_fn/features/saved/presentation/pages/save_subcategory_page.dart';
 
 ///
 class SavedCard extends StatelessWidget {
   ///
-  const SavedCard({required this.savedName, super.key});
+  const SavedCard({required this.savedName, required this.isDoc, super.key});
 
   ///
   final String savedName;
 
+  ///
+  final bool isDoc;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed('savedSubcategoryPage'),
+      onTap:
+          () => context.pushNamed(
+            'savedSubcategoryPage',
+            extra: SaveSubcategoryPage(categoryName: savedName, isDoc: isDoc),
+          ),
       child: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

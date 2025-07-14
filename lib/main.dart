@@ -214,7 +214,11 @@ final GoRouter routes = GoRouter(
       name: 'savedSubcategoryPage',
       path: '/savedSubcategoryPage',
       builder: (context, state) {
-        return const SaveSubcategoryPage();
+        final args = state.extra! as SaveSubcategoryPage;
+        return SaveSubcategoryPage(
+          categoryName: args.categoryName,
+          isDoc: args.isDoc,
+        );
       },
     ),
   ],

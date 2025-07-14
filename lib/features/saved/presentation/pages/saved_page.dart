@@ -46,8 +46,10 @@ class _SavedPageState extends State<SavedPage> {
                           crossAxisSpacing: 5,
                         ),
                     itemBuilder:
-                        (context, index) =>
-                            SavedCard(savedName: snapshot.data![index].name),
+                        (context, index) => SavedCard(
+                          savedName: snapshot.data![index].name,
+                          isDoc: snapshot.data![index].isDoc,
+                        ),
                   );
                 }
                 return const SizedBox.shrink();
