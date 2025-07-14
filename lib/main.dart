@@ -29,6 +29,7 @@ import 'package:nearme_fn/features/home/presentation/pages/see_places_page.dart'
 import 'package:nearme_fn/features/home/presentation/pages/see_recommended_page.dart';
 import 'package:nearme_fn/features/home/presentation/pages/subcategory_page.dart';
 import 'package:nearme_fn/features/notifications/presentation/pages/notifications_page.dart';
+import 'package:nearme_fn/features/saved/presentation/pages/save_subcategory_page.dart';
 import 'package:nearme_fn/firebase_options.dart';
 
 void main() async {
@@ -207,6 +208,13 @@ final GoRouter routes = GoRouter(
       path: '/seeAllRecommendedPage',
       builder: (context, state) {
         return const SeeAllRecommendedPage();
+      },
+    ),
+    GoRoute(
+      name: 'savedSubcategoryPage',
+      path: '/savedSubcategoryPage',
+      builder: (context, state) {
+        return const SaveSubcategoryPage();
       },
     ),
   ],
