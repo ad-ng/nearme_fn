@@ -13,6 +13,7 @@ class PlaceItemModel {
   String phoneNumber;
   int subCategoryId;
   SubcategoryModel subCategory;
+  List<dynamic> savedItems;
   PlaceItemModel({
     required this.id,
     required this.title,
@@ -24,6 +25,7 @@ class PlaceItemModel {
     required this.phoneNumber,
     required this.subCategoryId,
     required this.subCategory,
+    required this.savedItems,
   });
 
   Map<String, dynamic> toMap() {
@@ -55,6 +57,7 @@ class PlaceItemModel {
       subCategory: SubcategoryModel.fromMap(
         map['subCategory'] as Map<String, dynamic>,
       ),
+      savedItems: List<dynamic>.from(map['savedItems'] as List<dynamic>),
     );
   }
 

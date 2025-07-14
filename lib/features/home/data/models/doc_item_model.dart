@@ -15,6 +15,7 @@ class DocItemModel {
   final String location;
   final String featuredImg;
   final String createdAt;
+  final List<dynamic> savedItems;
   DocItemModel({
     required this.id,
     required this.title,
@@ -26,6 +27,7 @@ class DocItemModel {
     required this.location,
     required this.featuredImg,
     required this.createdAt,
+    required this.savedItems,
   });
 
   Map<String, dynamic> toMap() {
@@ -55,6 +57,7 @@ class DocItemModel {
       location: map['location'] as String,
       featuredImg: map['featuredImg'] as String,
       createdAt: map['createdAt'] as String,
+      savedItems: List<dynamic>.from(map['savedItems'] as List<dynamic>),
     );
   }
 

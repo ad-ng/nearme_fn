@@ -4,7 +4,10 @@ import 'package:flutter_svg/svg.dart';
 ///
 class SavedCard extends StatelessWidget {
   ///
-  const SavedCard({super.key});
+  const SavedCard({required this.savedName, super.key});
+
+  ///
+  final String savedName;
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +17,17 @@ class SavedCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            width: 172,
-            height: 134,
+            // width: 172,
+            // height: 134,
             child: SvgPicture.asset(
               '././lib/images/Img.svg',
               fit: BoxFit.cover,
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Food & Dining',
-            style: TextStyle(
+          Text(
+            savedName,
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 15,
               fontFamily: 'SF Pro',

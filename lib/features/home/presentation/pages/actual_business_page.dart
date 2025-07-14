@@ -15,6 +15,14 @@ class ActualBusinessPage extends StatefulWidget {
 }
 
 class _ActualBusinessPageState extends State<ActualBusinessPage> {
+  late bool isSaved;
+
+  @override
+  void initState() {
+    super.initState();
+    isSaved = widget.placeItemModel.savedItems.isNotEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,11 +81,21 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                 shape: BoxShape.circle,
                               ),
                               child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.favorite_border_rounded,
-                                  color: Colors.black,
-                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    isSaved = !isSaved;
+                                  });
+                                },
+                                icon:
+                                    isSaved
+                                        ? const Icon(
+                                          Icons.favorite,
+                                          color: Color(0xFF007DD1),
+                                        )
+                                        : const Icon(
+                                          Icons.favorite_outline_outlined,
+                                          color: Colors.black,
+                                        ),
                               ),
                             ),
                           ],
