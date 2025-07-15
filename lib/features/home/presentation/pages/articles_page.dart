@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/home/data/models/doc_item_model.dart';
+import 'package:nearme_fn/features/saved/data/datasources/remote/saved_api_service.dart';
 
 ///
 class ArticlesPage extends StatefulWidget {
@@ -150,6 +151,10 @@ class _ArticlesPageState extends State<ArticlesPage> {
                           onPressed: () {
                             setState(() {
                               isSaved = !isSaved;
+                              SavedApiService().saveItem(
+                                widget.docItemModel.id,
+                                null,
+                              );
                             });
                           },
                           icon:

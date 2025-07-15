@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 import 'package:nearme_fn/features/home/domain/usecases/bz_modal.dart';
+import 'package:nearme_fn/features/saved/data/datasources/remote/saved_api_service.dart';
 
 ///
 class ActualBusinessPage extends StatefulWidget {
@@ -84,6 +85,12 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                 onPressed: () {
                                   setState(() {
                                     isSaved = !isSaved;
+                                    if (isSaved) {
+                                      SavedApiService().saveItem(
+                                        null,
+                                        widget.placeItemModel.id,
+                                      );
+                                    }
                                   });
                                 },
                                 icon:

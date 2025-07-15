@@ -28,4 +28,20 @@ class SavedApiService {
       throw Exception('Something went wrong: $e');
     }
   }
+
+  ///
+  Future<dynamic> saveItem(int? docItemId, int? placeItemId) async {
+    try {
+      final response = await dio.post<Map<String, dynamic>>(
+        '/saved',
+        data: {'docItemId': docItemId, 'placeItemId': placeItemId},
+      );
+      final dataJson = response.data?['data'];
+      return dataJson;
+    } on DioException catch (e) {
+      throw Exception('Something went wrong: $e');
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
 }

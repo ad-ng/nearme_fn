@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
+import 'package:nearme_fn/features/saved/data/datasources/remote/saved_api_service.dart';
 
 ///
 class BusinessCard extends StatefulWidget {
@@ -74,6 +75,12 @@ class _BusinessCardState extends State<BusinessCard> {
                 onPressed: () {
                   setState(() {
                     isSaved = !isSaved;
+                    if (isSaved) {
+                      SavedApiService().saveItem(
+                        null,
+                        widget.placeItemModel.id,
+                      );
+                    }
                   });
                 },
                 icon:
