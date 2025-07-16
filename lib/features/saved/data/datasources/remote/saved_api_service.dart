@@ -8,10 +8,10 @@ class SavedApiService {
   final Dio dio = DioService.instance.dio;
 
   ///
-  Future<List<SavedModel>> fetchingAllSavedItems(String CategoryName) async {
+  Future<List<SavedModel>> fetchingAllSavedItems(String categoryName) async {
     try {
       final response = await dio.get<Map<String, dynamic>>(
-        '/saved/$CategoryName',
+        '/saved/$categoryName',
       );
       final dataJson = response.data?['data'];
 
@@ -37,6 +37,37 @@ class SavedApiService {
         data: {'docItemId': docItemId, 'placeItemId': placeItemId},
       );
       final dataJson = response.data?['data'];
+      return dataJson;
+    } on DioException catch (e) {
+      throw Exception('Something went wrong: $e');
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
+
+  ///
+  Future<dynamic> unsaveItem(int? docItemId, int? placeItemId) async {
+    try {
+      final response = await dio.delete<Map<String, dynamic>>(
+        '/saved',
+        data: {'docItemId': docItemId, 'placeItemId': placeItemId},
+      );
+      final dataJson = response.data?['data'];
+      return dataJson;
+    } on DioException catch (e) {
+      throw Exception('Something went wrong: $e');
+    } catch (e) {
+      throw Exception('Something went wrong: $e');
+    }
+  }
+
+  ///
+  Future<int> totalSavedItem(String categoryName) async {
+    try {
+      final response = await dio.get<Map<String, dynamic>>(
+        '/saved/count/$categoryName',
+      );
+      final dataJson = response.data?['data'] as int;
       return dataJson;
     } on DioException catch (e) {
       throw Exception('Something went wrong: $e');

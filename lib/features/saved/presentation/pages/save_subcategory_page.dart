@@ -60,6 +60,19 @@ class _SaveSubcategoryPageState extends State<SaveSubcategoryPage> {
                         ),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
+                            if (snapshot.data!.isEmpty) {
+                              return const Center(
+                                child: Text(
+                                  'No Saved Items Yet',
+                                  style: TextStyle(
+                                    color: Color(0xFF007DD1),
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              );
+                            }
                             return ListView.builder(
                               itemCount: snapshot.data!.length,
                               itemBuilder:
@@ -83,6 +96,19 @@ class _SaveSubcategoryPageState extends State<SaveSubcategoryPage> {
                         ),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
+                            if (snapshot.data!.isEmpty) {
+                              return const Center(
+                                child: Text(
+                                  'No Saved Items Yet',
+                                  style: TextStyle(
+                                    color: Color(0xFF007DD1),
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              );
+                            }
                             return ListView.builder(
                               itemCount: snapshot.data!.length,
                               itemBuilder:

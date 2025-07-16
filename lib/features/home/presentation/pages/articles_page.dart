@@ -151,10 +151,17 @@ class _ArticlesPageState extends State<ArticlesPage> {
                           onPressed: () {
                             setState(() {
                               isSaved = !isSaved;
-                              SavedApiService().saveItem(
-                                widget.docItemModel.id,
-                                null,
-                              );
+                              if (isSaved) {
+                                SavedApiService().saveItem(
+                                  widget.docItemModel.id,
+                                  null,
+                                );
+                              } else {
+                                SavedApiService().unsaveItem(
+                                  widget.docItemModel.id,
+                                  null,
+                                );
+                              }
                             });
                           },
                           icon:

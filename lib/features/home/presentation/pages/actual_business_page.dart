@@ -90,6 +90,11 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                         null,
                                         widget.placeItemModel.id,
                                       );
+                                    } else {
+                                      SavedApiService().unsaveItem(
+                                        null,
+                                        widget.placeItemModel.id,
+                                      );
                                     }
                                   });
                                 },

@@ -80,6 +80,11 @@ class _BusinessCardState extends State<BusinessCard> {
                         null,
                         widget.placeItemModel.id,
                       );
+                    } else {
+                      SavedApiService().unsaveItem(
+                        null,
+                        widget.placeItemModel.id,
+                      );
                     }
                   });
                 },
