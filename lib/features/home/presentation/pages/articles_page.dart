@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/home/data/models/doc_item_model.dart';
+import 'package:nearme_fn/features/saved/data/datasources/remote/saved_api_service.dart';
 
 ///
-class ArticlesPage extends StatelessWidget {
+class ArticlesPage extends StatefulWidget {
   ///
   const ArticlesPage({required this.docItemModel, super.key});
 
   ///
   final DocItemModel docItemModel;
+
+  @override
+  State<ArticlesPage> createState() => _ArticlesPageState();
+}
+
+class _ArticlesPageState extends State<ArticlesPage> {
+  late bool isSaved;
+
+  @override
+  void initState() {
+    super.initState();
+    isSaved = widget.docItemModel.savedItems.isNotEmpty;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +56,7 @@ class ArticlesPage extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    docItemModel.title,
+                    widget.docItemModel.title,
                     style: const TextStyle(
                       color: Color(0xFF007DD1),
                       fontSize: 20,
@@ -62,7 +76,7 @@ class ArticlesPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      docItemModel.location,
+                      widget.docItemModel.location,
                       style: const TextStyle(
                         color: Color(0xFF007DD1),
                         fontSize: 14,
@@ -72,7 +86,7 @@ class ArticlesPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 26),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -91,7 +105,7 @@ class ArticlesPage extends StatelessWidget {
                         ),
                         const SizedBox(width: 7),
                         Text(
-                          '${docItemModel.author.firstName} ${docItemModel.author.lastName}',
+                          '${widget.docItemModel.author.firstName} ${widget.docItemModel.author.lastName}',
                           style: const TextStyle(
                             color: Color(0xFF191919),
                             fontSize: 10,
@@ -101,7 +115,7 @@ class ArticlesPage extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          docItemModel.createdAt.substring(0, 10),
+                          widget.docItemModel.createdAt.substring(0, 10),
                           style: const TextStyle(
                             color: Color(0xFF959595),
                             fontSize: 10,
@@ -131,19 +145,42 @@ class ArticlesPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Row(
+                    Row(
                       children: [
-                        Icon(
-                          Icons.favorite_border_rounded,
-                          color: Colors.black,
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isSaved = !isSaved;
+                              if (isSaved) {
+                                SavedApiService().saveItem(
+                                  widget.docItemModel.id,
+                                  null,
+                                );
+                              } else {
+                                SavedApiService().unsaveItem(
+                                  widget.docItemModel.id,
+                                  null,
+                                );
+                              }
+                            });
+                          },
+                          icon:
+                              isSaved
+                                  ? const Icon(
+                                    Icons.favorite,
+                                    color: Color(0xFF007DD1),
+                                  )
+                                  : const Icon(
+                                    Icons.favorite_outline_outlined,
+                                    color: Colors.black,
+                                  ),
                         ),
-                        SizedBox(width: 15),
-                        Icon(Icons.share_outlined, color: Colors.black),
+                        const Icon(Icons.share_outlined, color: Colors.black),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 15),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Text.rich(
@@ -159,7 +196,7 @@ class ArticlesPage extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: docItemModel.summary,
+                          text: widget.docItemModel.summary,
                           style: const TextStyle(
                             color: Color(0xFF191919),
                             fontSize: 12,
@@ -198,9 +235,9 @@ class ArticlesPage extends StatelessWidget {
                 SizedBox(
                   height: 257,
                   child: Hero(
-                    tag: docItemModel.id,
+                    tag: widget.docItemModel.id,
                     child: Image.network(
-                      docItemModel.featuredImg,
+                      widget.docItemModel.featuredImg,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -209,7 +246,7 @@ class ArticlesPage extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    docItemModel.description,
+                    widget.docItemModel.description,
                     style: const TextStyle(
                       color: Color(0xFF191919),
                       fontSize: 12,

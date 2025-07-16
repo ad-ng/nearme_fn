@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
 import 'package:nearme_fn/features/home/domain/usecases/bz_modal.dart';
+import 'package:nearme_fn/features/saved/data/datasources/remote/saved_api_service.dart';
 
 ///
 class ActualBusinessPage extends StatefulWidget {
@@ -15,6 +16,14 @@ class ActualBusinessPage extends StatefulWidget {
 }
 
 class _ActualBusinessPageState extends State<ActualBusinessPage> {
+  late bool isSaved;
+
+  @override
+  void initState() {
+    super.initState();
+    isSaved = widget.placeItemModel.savedItems.isNotEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,11 +82,32 @@ class _ActualBusinessPageState extends State<ActualBusinessPage> {
                                 shape: BoxShape.circle,
                               ),
                               child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.favorite_border_rounded,
-                                  color: Colors.black,
-                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    isSaved = !isSaved;
+                                    if (isSaved) {
+                                      SavedApiService().saveItem(
+                                        null,
+                                        widget.placeItemModel.id,
+                                      );
+                                    } else {
+                                      SavedApiService().unsaveItem(
+                                        null,
+                                        widget.placeItemModel.id,
+                                      );
+                                    }
+                                  });
+                                },
+                                icon:
+                                    isSaved
+                                        ? const Icon(
+                                          Icons.favorite,
+                                          color: Color(0xFF007DD1),
+                                        )
+                                        : const Icon(
+                                          Icons.favorite_outline_outlined,
+                                          color: Colors.black,
+                                        ),
                               ),
                             ),
                           ],

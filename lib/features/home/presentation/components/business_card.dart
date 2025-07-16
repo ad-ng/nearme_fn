@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nearme_fn/features/home/data/models/place_item_model.dart';
+import 'package:nearme_fn/features/saved/data/datasources/remote/saved_api_service.dart';
 
 ///
-class BusinessCard extends StatelessWidget {
+class BusinessCard extends StatefulWidget {
   ///
   const BusinessCard({required this.placeItemModel, super.key});
 
   ///
   final PlaceItemModel placeItemModel;
+
+  @override
+  State<BusinessCard> createState() => _BusinessCardState();
+}
+
+class _BusinessCardState extends State<BusinessCard> {
+  late bool isSaved;
+
+  @override
+  void initState() {
+    super.initState();
+    isSaved = widget.placeItemModel.savedItems.isNotEmpty;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +58,7 @@ class BusinessCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          placeItemModel.workingHours,
+                          widget.placeItemModel.workingHours,
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 10,
@@ -58,11 +72,29 @@ class BusinessCard extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_outline_outlined,
-                  color: Colors.black,
-                ),
+                onPressed: () {
+                  setState(() {
+                    isSaved = !isSaved;
+                    if (isSaved) {
+                      SavedApiService().saveItem(
+                        null,
+                        widget.placeItemModel.id,
+                      );
+                    } else {
+                      SavedApiService().unsaveItem(
+                        null,
+                        widget.placeItemModel.id,
+                      );
+                    }
+                  });
+                },
+                icon:
+                    isSaved
+                        ? const Icon(Icons.favorite, color: Color(0xFF007DD1))
+                        : const Icon(
+                          Icons.favorite_outline_outlined,
+                          color: Colors.black,
+                        ),
               ),
             ],
           ),
@@ -86,11 +118,11 @@ class BusinessCard extends StatelessWidget {
                       width: 69,
                       height: 69,
                       child: Hero(
-                        tag: placeItemModel.id,
+                        tag: widget.placeItemModel.id,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Image.network(
-                            placeItemModel.placeImg[0],
+                            widget.placeItemModel.placeImg[0],
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -104,7 +136,7 @@ class BusinessCard extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.43,
                           height: 20,
                           child: Text(
-                            placeItemModel.title,
+                            widget.placeItemModel.title,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               color: Color(0xFF007DD1),
@@ -117,7 +149,7 @@ class BusinessCard extends StatelessWidget {
                         SizedBox(
                           width: 143,
                           child: Text(
-                            placeItemModel.description,
+                            widget.placeItemModel.description,
                             maxLines: 4,
                             style: const TextStyle(
                               color: Color(0xFF6C7278),
@@ -136,7 +168,7 @@ class BusinessCard extends StatelessWidget {
                   onTap:
                       () => context.pushNamed(
                         'actualBusinessPage',
-                        extra: placeItemModel,
+                        extra: widget.placeItemModel,
                       ),
                   child: Container(
                     width: 85,
