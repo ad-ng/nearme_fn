@@ -42,7 +42,7 @@ class _SavedPageState extends State<SavedPage> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 0.9,
+                          childAspectRatio: 0.95, // 0.9,
                           crossAxisSpacing: 5,
                         ),
                     itemBuilder:
